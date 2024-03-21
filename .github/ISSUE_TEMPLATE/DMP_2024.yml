@@ -1,0 +1,111 @@
+name: DMP 2024 Project Template	
+description: List a new project for Dedicated Mentoring Program (DMP) 2024 
+title: "[DMP 2024]: "
+labels: ["DMP 2024"]
+body:
+  - type: textarea
+    id: ticket-description
+    validations:
+      required: true
+    attributes:
+      label: Ticket Contents
+      value: |
+        ## Description
+        The Skills And Certification platform is a virtual management environment designed to cater to the needs of both students and trainers. It seamlessly complements interactive physical learning at educational institutions, enhancing the overall learning experience. This comprehensive solution offers a wide range of services, including the creation and management of institutions, & certification, and detailed course offerings. By leveraging advanced technology, the platform aims to streamline the learning process and empower both learners and educators in their pursuit of knowledge and skill development
+        
+        **Enhancement Scope**
+        1. UI/UX design can be enhanced and update.
+        2. Implementation of data analytics tools and analytical dashboard
+
+
+  - type: textarea
+    id: ticket-goals
+    validations:
+      required: true
+    attributes:
+      label: Goals & Mid-Point Milestone
+      value: |
+        ## Goals for a Template Builder:
+        - [ ] User-Friendly Interface: Develop an intuitive and user-friendly design for easy template creation.
+        - [ ] Versatility: Provide a tool that caters to various document types and purposes.
+        - [ ] Consistency: Ensure templates maintain a consistent look and feel across different sections.
+        - [ ] Customization: Enable users to easily customize templates to meet their specific needs.
+        - [ ] Efficiency: Streamline the document creation process, saving users time and effort.
+        - [ ] Compatibility: Ensure compatibility with popular document formats and software.
+        - [ ] Collaboration: Allow users to collaborate on template creation, facilitating team workflows.
+
+  - type: textarea
+    id: ticket-setup
+    attributes:
+      label: Setup/Installation 
+      value: |
+        Installations guidelines:
+        - https://github.com/a2i-code-For-Govstack/nise3-skill-and-certification/blob/master/README.md
+
+  - type: textarea
+    id: ticket-expected-outcome
+    attributes:
+      label: Expected Outcome
+      value: |
+        Implementation of data analytic tools and analytical dashboard and implementation of information mediator
+
+  - type: textarea
+    id: ticket-acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      value: |
+        Better Ui/ Ux and easy integration feature with any system
+
+  - type: textarea
+    id: ticket-implementation-details
+    validations:
+      required: true
+    attributes:
+      label: Implementation Details
+      value: |
+        The project will be developed using Laravel framework. Specific tasks include:
+        - Enhancing UI/UX design.
+        - Implementation of analytical dashboard
+        - implementation of information mediator
+
+  - type: textarea
+    id: ticket-mockups
+    attributes:
+      label: Mockups/Wireframes
+      value: |
+        https://github.com/a2i-code-For-Govstack/nise3-skill-and-certification/blob/master/README.md
+
+  - type: input
+    id: ticket-product
+    attributes:
+      label: Product Name
+      placeholder: Nise3 - skill and certification
+
+    validations:
+      required: true
+
+  - type: textarea
+    id: ticket-organisation
+    attributes:
+      label: Organisation Name
+      description: Enter Organisation Name
+      value: a2i
+    validations:
+      required: true
+
+  - type: textarea
+    id: ticket-governance-domain
+    attributes:
+      label: Domain
+      description: Enter the domain of the project
+      value: https://dpg.nise.gov.bd/
+    validations:
+      required: true
+
+  - type: textarea
+    id: ticket-technical-skills-required
+    attributes:
+      label: Tech Skills Needed
+      value: Laravel, API , PHP , Data Analysis
+    validations:
+      required: true
