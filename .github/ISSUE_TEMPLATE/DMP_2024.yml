@@ -27,11 +27,8 @@ body:
       value: |
         ## Goals for a NISE3 :
         - [ ] User-Friendly Interface: Develop an intuitive and user-friendly design for easy template creation.
-        - [ ] Consistency: Ensure templates maintain a consistent look and feel across different sections.
-        - [ ] Customization: Enable users to easily customize templates to meet their specific needs.
-        - [ ] Efficiency: Streamline the document creation process, saving users time and effort.
-
-
+        - [ ] Data Analysis: Development of analytical dashboard and information mediator
+        
   - type: textarea
     id: ticket-setup
     attributes:
