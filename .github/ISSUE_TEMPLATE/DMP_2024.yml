@@ -1,4 +1,4 @@
-name: DMP 2024 Project Template	
+name: DMP 2024 Project Template
 description: List a new project for Dedicated Mentoring Program (DMP) 2024 
 title: "[DMP 2024]: "
 labels: ["DMP 2024"]
@@ -11,12 +11,7 @@ body:
       label: Ticket Contents
       value: |
         ## Description
-        The Skills And Certification platform is a virtual management environment designed to cater to the needs of both students and trainers. It seamlessly complements interactive physical learning at educational institutions, enhancing the overall learning experience. This comprehensive solution offers a wide range of services, including the creation and management of institutions, & certification, and detailed course offerings. By leveraging advanced technology, the platform aims to streamline the learning process and empower both learners and educators in their pursuit of knowledge and skill development
-        
-        **Enhancement Scope**
-        1. UI/UX design can be enhanced and update.
-        2. Implementation of data analytics tools and analytical dashboard
-
+        [Provide a brief description of the feature, including why it is needed and what it will accomplish.]
 
   - type: textarea
     id: ticket-goals
@@ -24,32 +19,32 @@ body:
       required: true
     attributes:
       label: Goals & Mid-Point Milestone
+      description: List the goals of the feature. Please add the goals that must be achieved by Mid-point check-in i.e 1.5 months into the coding period.
       value: |
-        ## Goals for a NISE3 :
-        - [ ] User-Friendly Interface: Develop an intuitive and user-friendly design for easy template creation.
-        - [ ] Data Analysis: Development of analytical dashboard and information mediator
-        
+        ## Goals
+        - [ ] [Goal 1]
+        - [ ] [Goal 2]
+        - [ ] [Goal 3]
+        - [ ] [Goal 4]
+        - [ ] [Goals Achieved By Mid-point Milestone]
+
   - type: textarea
     id: ticket-setup
     attributes:
       label: Setup/Installation 
-      value: |
-        Installations guidelines:
-        - https://github.com/a2i-code-For-Govstack/nise3-skill-and-certification/blob/master/README.md
+      description: Please list or link setup or installation guide (if any)
 
   - type: textarea
     id: ticket-expected-outcome
     attributes:
       label: Expected Outcome
-      value: |
-        Implementation of data analytic tools and analytical dashboard and implementation of information mediator
+      description: Describe in detail what the final product or result should look like and how it should behave.
 
   - type: textarea
     id: ticket-acceptance-criteria
     attributes:
       label: Acceptance Criteria
-      value: |
-        Better Ui/ Ux and easy integration feature with any system
+      description: List the acceptance criteria for this feature.
 
   - type: textarea
     id: ticket-implementation-details
@@ -57,50 +52,212 @@ body:
       required: true
     attributes:
       label: Implementation Details
-      value: |
-        The project will be developed using Laravel framework. Specific tasks include:
-        - Enhancing UI/UX design.
-        - Implementation of analytical dashboard
-        - implementation of information mediator
+      description: List any technical details about the proposed implementation, including any specific technologies that will be used.
 
   - type: textarea
     id: ticket-mockups
     attributes:
       label: Mockups/Wireframes
-      value: |
-        https://github.com/a2i-code-For-Govstack/nise3-skill-and-certification/blob/master/README.md
+      description: Include links to any visual aids, mockups, wireframes, or diagrams that help illustrate what the final product should look like. This is not always necessary, but can be very helpful in many cases.
 
   - type: input
     id: ticket-product
     attributes:
       label: Product Name
-      placeholder: Nise3 - skill and certification
-
+      placeholder: Enter Product Name
     validations:
       required: true
 
-  - type: textarea
+  - type: dropdown
     id: ticket-organisation
     attributes:
       label: Organisation Name
       description: Enter Organisation Name
-      value: a2i
+      multiple: false
+      options:
+        - Bandhu
+        - a2i
+        - Blockster Global (CREDBEL)
+        - Civis
+        - Dhwani
+        - Dhiway
+        - EGov
+        - EkShop Marketplace
+        - FIDE
+        - If Me
+        - Key Education Foundation
+        - Norwegian Meteorological Institute
+        - Planet Read
+        - Project Second Chance
+        - Reap Benefit
+        - SamagraX
+        - ShikshaLokam
+        - Tech4Dev
+        - Tekdi
+        - The Mifos Initiative
+        - Tibil
+        - Ushahidi
+        - Arghyam
+        - Piramal Swasthya Management Research Institute
     validations:
       required: true
 
-  - type: textarea
+  - type: dropdown
     id: ticket-governance-domain
     attributes:
       label: Domain
-      description: Enter the domain of the project
-      value: https://dpg.nise.gov.bd/
+      options:
+        - ⁠Healthcare 
+        - ⁠Education
+        - Financial Inclusion
+        - ⁠Livelihoods
+        - ⁠Skilling 
+        - ⁠Learning & Development
+        - ⁠Agriculture
+        - ⁠Service Delivery
+        - Open Source Library
+        - Water
+    validations:
+      required: true
+
+
+  - type: dropdown
+    id: ticket-technical-skills-required
+    attributes:
+      label: Tech Skills Needed
+      description: Select the technologies needed for this ticket (use Ctrl or Command to select multiple)
+      multiple: true
+      options:
+        - .NET
+        - Angular
+        - Artificial Intelligence
+        - ASP.NET
+        - AWS
+        - Babel
+        - Bootstrap
+        - C#
+        - Chart.js
+        - CI/CD
+        - Computer Vision
+        - CORS
+        - cURL
+        - Cypress
+        - D3.js
+        - Database
+        - Debugging
+        - Design
+        - DevOps
+        - Django
+        - Docker
+        - Electron
+        - ESLint
+        - Express.js
+        - Feature
+        - Flask
+        - Go
+        - GraphQL
+        - HTML
+        - Ionic
+        - Jest
+        - Java
+        - JavaScript
+        - Jenkins
+        - JWT
+        - Kubernetes
+        - Laravel
+        - Machine Learning
+        - Maintenance
+        - Markdown
+        - Material-UI
+        - Microservices
+        - MongoDB
+        - Mobile
+        - Mockups
+        - Mocha
+        - Natural Language Processing
+        - NestJS
+        - Node.js
+        - NUnit
+        - OAuth
+        - Performance Improvement
+        - Prettier
+        - Python
+        - Question
+        - React
+        - React Native
+        - Redux
+        - RESTful APIs
+        - Ruby
+        - Ruby on Rails
+        - Rust
+        - Scala
+        - Security
+        - Selenium
+        - SEO
+        - Serverless
+        - Solidity
+        - Spring Boot
+        - SQL
+        - Swagger
+        - Tailwind CSS
+        - Test
+        - Testing Library
+        - Three.js
+        - TypeScript
+        - UI/UX/Design
+        - Virtual Reality
+        - Vue.js
+        - WebSockets
+        - Webpack
+        - Other
     validations:
       required: true
 
   - type: textarea
-    id: ticket-technical-skills-required
+    id: ticket-mentors
     attributes:
-      label: Tech Skills Needed
-      value: Laravel, API , PHP , Data Analysis
+      label: Mentor(s)
+      description: Please tag relevant mentors for the ticket
     validations:
       required: true
+
+  - type: dropdown
+    id: ticket-category
+    attributes: 
+      label: Category
+      description: Choose the categories that best describe your ticket
+      multiple: true
+      options:
+        - API
+        - Analytics
+        - Accessibility
+        - Backend
+        - Breaking Change
+        - Beginner Friendly
+        - Configuration
+        - CI/CD
+        - Database
+        - Data Science
+        - Deprecation
+        - Documentation
+        - Delpoyment
+        - Frontend
+        - Internationalization
+        - Localization
+        - Machine Learning
+        - Maintenance
+        - Mobile
+        - Performance Improvement
+        - Question
+        - Refactoring
+        - Research
+        - Needs Reproduction
+        - SEO
+        - Security
+        - Testing
+        - AI
+        - Other
+    validations:
+      required: true
+
+  
