@@ -11,7 +11,7 @@
     <meta itemprop="tag" content="{{ $siteSettingInfo->meta_tag }}">
 
     <title>@yield('title', ($siteSettingInfo->site_title) ? $siteSettingInfo->site_title : '' )</title>
-    
+
     @if ($siteSettingInfo->show_favicon)
         <link href="{{ asset('storage/'. $siteSettingInfo->site_favicon) }}" type="image/x-icon" rel="shortcut icon" />
     @endif
@@ -19,9 +19,9 @@
     <link rel="stylesheet" href="{{asset('/css/app.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.0/css/OverlayScrollbars.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;700&display=swap"
-          rel="stylesheet">
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Noto Sans Bengali', sans-serif;
@@ -38,26 +38,28 @@
             padding: 10px 6px;
             border-radius: unset;
             transition: .5s;
-            font-size: 14px;
+            font-size: 1rem;
+            font-weight: bold;
         }
 
         .menu-bg-color li a {
             color: #fff;
-            padding: 15px 6px;
+            padding: 0px 6px;
+            padding-top: 4px;
             border-radius: unset;
             transition: .5s;
-            font-size: 14px;
+            font-size: 1rem;
         }
 
         .menu-bg-color li a:hover {
-            background: #9c36c6;
+            /* background: #9c36c6; */
             border-radius: unset;
             color: #FFFFFF;
             transition: .5s;
         }
 
         .active-menu a {
-            background: #9c36c6;
+            border-bottom: 1px solid white;
             border-radius: unset;
             color: #FFFFFF;
             transition: .5s;
@@ -70,7 +72,175 @@
             transition: .5s;
         }
 
+        .navbar .navbar-brand {
+            font-family: "Be Vietnam Pro", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            /* letter-spacing: 2px; */
+        }
+
+        .navbar .navbar-nav {
+            margin-left: auto;
+        }
+
+        .nav-effect {
+            display: inline-block;
+            font-family: "Be Vietnam Pro", sans-serif;
+            position: relative;
+            color: rgb(163, 226, 255);
+            margin-left: 0.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .nav-effect:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: rgb(163, 226, 255);
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .nav-effect:hover:after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
         /*new style end*/
+
+        /* Full width slider style start */
+        .carousel-text-container {
+            position: absolute;
+            top: 35%;
+            transform: translateY(-50%);
+            left: 10%;
+            right: 30%;
+            height: 100%;
+            width: 40vw;
+            text-align: center;
+            color: white;
+            z-index: 2; 
+            margin-top: 30%;
+            padding: auto;
+            text-align: start;
+        }
+
+        .carousel-text-container h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .carousel-text-container h2 {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        .carousel-text-container h3 {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        
+        .gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 100%;
+            width: 80%;
+            background: rgb(0,0,0);
+            background: linear-gradient(90deg, rgba(0,0,0,0.6138830532212884) 0%, rgba(0,0,0,0.6) 17%, rgba(0,0,0,0.5) 30%, rgba(0,0,0,0.4) 42%, rgba(0,0,0,0.3) 57%, rgba(0,0,0,0.2) 72%, rgba(0,0,0,0.1) 88%, rgba(0,0,0,0) 100%);
+            z-index: 1;
+        }
+
+        @media screen and (max-width: 768px) {
+            .carousel-text-container {
+                margin-left: 10%;
+            }
+            .carousel-text-container h1 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .carousel-text-container {
+                margin-left: 15%;
+                margin-top: 40%;
+            }
+            .carousel-text-container h1 {
+                font-size: 3.5rem;
+                font-weight: bold;
+            }
+            .carousel-text-container h2 {
+                font-size: 2.5rem;
+                font-weight: bold;
+            }
+            .carousel-text-container h3 {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+        }
+
+        @media screen and (min-width: 1000px) {
+            .carousel-text-container {
+                margin-left: 15%;
+                margin-top: 40%;
+            }
+            .carousel-text-container h1 {
+                font-size: 4rem;
+                font-weight: bold;
+            }
+        }
+
+        @media screen and (min-width: 1300px) {
+            .carousel-text-container {
+                margin-left: 10%;
+                margin-top: 30%;
+            }
+            .carousel-text-container h1 {
+                font-size: 4rem;
+                font-weight: bold;
+            }
+        }
+
+
+        @media screen and (min-width: 1500px) {
+            .carousel-text-container {
+                margin-left: 10%;
+                margin-top: 40%;
+            }
+            .carousel-text-container h1 {
+                font-size: 4rem;
+                font-weight: bold;
+            }
+        }
+
+
+        @media screen and (min-width: 1600px) {
+            .carousel-text-container {
+                margin-left: 10%;
+                margin-top: 25%;
+            }
+            .carousel-text-container h1 {
+                font-size: 5rem;
+                font-weight: bold;
+            }
+            .carousel-text-container h2 {
+                font-size: 3rem;
+                font-weight: bold;
+            }
+            .carousel-text-container h3 {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+        }
+        /* Full width slider style end */
 
         .logo {
             margin-left: 15px;
@@ -188,6 +358,12 @@
             top: 37px;
             height: 3px;
             background-image: linear-gradient(to right, #33c2a7 50%, #f5a000 50%) !important;
+        }
+
+        .course-heading-wrap {
+            color: black;
+            font-weight: bold;
+            font-size: 1rem
         }
 
         .default-heading-color {
@@ -553,7 +729,7 @@
 
         .footer-widget-quick-links ul {
             list-style: none;
-            column-count: 2;
+            column-count: 1;
             font-size: 1rem;
             color: #671688;
             padding-left: 0;

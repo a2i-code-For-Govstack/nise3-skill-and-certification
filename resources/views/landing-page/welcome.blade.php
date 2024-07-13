@@ -23,7 +23,15 @@
         <section class="top-content ">
             <!-- Carousel -->
             <div id="topCarousel" class="carousel slide" data-ride="carousel">
-                <div class="carousel-inner">
+                <div class="carousel-inner" style="position: relative">
+                    <div class="gradient-overlay">
+                    <div class="carousel-text-container">
+                        <h1>Transforming learning:</h1>
+                        <h2>Knowledge at your fingertips: Government eLearning Initiative.</h2>
+                        <h3>(Empowering citizens through accessible education.)</h3>
+                      </div>
+                    </div>
+                    
                     @foreach($sliders as $key => $slider)
                         @if (!$slider->slider)
                         <div class="carousel-item {{ ++$sl==1?'active':'' }}">
@@ -35,7 +43,7 @@
                                 opacity: 1;
                                 "></div>
 
-                            <div class="carousel-caption">
+                            {{-- <div class="carousel-caption">
                                 <h3 class="slider-title" title="{{ $slider->title }}">
                                     {{ $slider->title }}</h3>
                                 <div class="slider-button">
@@ -43,7 +51,7 @@
                                         <button class="btn btn-sm btn-link">{{ $slider->button_text }}</button>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>    
                         @else
                         <div class="carousel-item {{ ++$sl==1?'active':'' }}">
@@ -71,14 +79,14 @@
 
                 <a class="carousel-control-prev slider-previous-link" href="#topCarousel" role="button"
                    data-slide="prev">
-                <span class="slider-previous-icon" aria-hidden="true">
-                        <i class="fas fa-chevron-left"></i>
+                <span class="slider-previous-icon bg-white" aria-hidden="true">
+                        <i class="fas fa-chevron-left" style="color: black"></i>
                 </span>
                     <span class="sr-only">{{__('frontend.welcome.previous')}}</span>
                 </a>
                 <a class="carousel-control-next" href="#topCarousel" role="button" data-slide="next">
-                <span class="slider-next-icon" aria-hidden="true">
-                        <i class="fas fa-chevron-right"></i>
+                <span class="slider-next-icon bg-white" aria-hidden="true">
+                        <i class="fas fa-chevron-right" style="color: black"></i>
                 </span>
                     <span class="sr-only">{{__('frontend.welcome.next')}}</span>
                 </a>
@@ -90,14 +98,14 @@
 
     @endif
     <!-- About Us Start-->
-    <section class="about-us-section position-relative">
-        <div class="about-section-color">
-            <div class="container pt-5 pb-5">
-                <div class="row">
-                    <div class="col-md-7">
+    <section class="container-fluid about-us-section position-relative" style="background-color: #D9D9D9">
+        <div class="" style="background-color: #D9D9D9>
+            <div class=" py-5 px-5">
+                <div class="row flex-row-reverse">
+                    <div class="col-md-12 col-xl-5 pt-5">
                         <!--Services Heading-->
-                        <h2 class="section-heading-h2 pb-3 mb-0 font-weight-bold">{{strtoupper(__('generic.about_us'))}}</h2>
-                        <div class="about-us-content">
+                        <h2 class="section-heading-h2 pb-3 mb-0 font-weight-bold d-flex justify-content-center">{{strtoupper(__('generic.about_us'))}}</h2>
+                        <div class="about-us-content mx-5 pl-sm-5">
                             @if(!empty($staticPage))
                                 @if(strlen(strip_tags($staticPage->page_contents)) > 500)
                                     <p>
@@ -116,11 +124,11 @@
                         </div>
                     </div>
 
-                    <div class="col-md-5">
-                        <div class="about-us-media" style="margin-top: -80px">
+                    <div class="col-xl-7 my-5 px-xxl-5 mx-auto">
+                        <div class="about-us-media mx-lg-5 px-lg-1" style="height: 50vh">
                             <iframe
                                 src="https://www.youtube.com/embed/{{ !empty($introVideo)? $introVideo->youtube_video_id: '' }}"
-                                height="400" width="100%"
+                                height="100%" width="100%"
                                 title="Iframe" class="cr-img"></iframe>
                         </div>
                     </div>
@@ -313,22 +321,23 @@
                             <div class="col-md-12 p-0">
                                 <div class="row">
                                     @foreach($runningCourses as $key => $course)
-                                        <div class="col-md-3 course-card">
+                                        <div class="col-xl-3 col-md-4 col-sm-6 course-card">
                                             <a href="{{ route('frontend.course-details', ['course_id' => $course->id]) }}">
                                                 <div class="card card-main mb-2">
                                                     <div class="card-bar-home-course">
                                                         <div class="pb-3">
                                                             <img class="slider-img border-top-radius"
-                                                                 src="{{$course->cover_image ? asset('/storage/'. $course->cover_image) : 'http://via.placeholder.com/640x360'}}"
+                                                                 {{-- src="{{$course->cover_image ? asset('/storage/'. $course->cover_image) : 'http://via.placeholder.com/640x360'}}" --}}
+                                                                 src="{{$course->cover_image ? $course->cover_image : 'http://via.placeholder.com/640x360'}}"
                                                                  alt="{{ $course->title }}">
                                                         </div>
                                                         <div class="text-left pl-4 pr-4 pt-1 pb-1">
-                                                            {{-- <p class="font-weight-light" style="color: #9c36c6">{{ \App\Helpers\Classes\Helper::getLocaleCurrency($course->course_fee) ?? 'Free' }}</p> --}}
-                                                            <p class="font-weight-light" style="color: #9c36c6">
-                                                                {{ \App\Helpers\Classes\Helper::getLocaleCustomCurrency($course->course_fee, $siteSettingInfo->locale, $siteSettingInfo->local_currency) ?? 'Free' }}
-                                                                {{-- {{$siteSettingInfo->locale}} -- {{$siteSettingInfo->local_currency}} --}}
+
+                                                            <p class=" course-heading-wrap mb-0 text-center">{{ $course? $course->title :'' }}</p>
+
+                                                            <p class="text-dark">
+                                                                More than 8yr Experience as Illustrator. Learn how to becoming professional graphic Designer Now...
                                                             </p>
-                                                            <p class="font-weight-bold course-heading-wrap">{{ $course? $course->title :'' }}</p>
 
                                                             <p class="font-weight-light mb-1"><i
                                                                     class="fas fa-clock gray-color mr-2"></i> <span
@@ -336,19 +345,29 @@
 
                                                             </p>
 
-                                                            <p class="font-weight-light mb-1"><i
-                                                                    class="fa fa-user gray-color mr-2"></i> <span
-                                                                    class="course-p">{{__('frontend.welcome.student')}}({{ $course->enrolledTrainees ? $course->enrolledTrainees->count() : 0 }})</span>
+                                                            <p class="font-weight-light mb-1">
+                                                                <i class="fa fa-user gray-color mr-2"></i> 
+                                                                    <spann class="course-p">
+                                                                        {{-- {{__('frontend.welcome.student')}}({{ $course->enrolledTrainees ? $course->enrolledTrainees->count() : 0 }}) --}}
+                                                                        Enrolled Students: {{ $course->enrolledTrainees ? $course->enrolledTrainees->count() : 0 }}
+                                                                    </span>
 
                                                             </p>
 
+                                                              {{-- <p class="font-weight-light" style="color: #9c36c6">{{ \App\Helpers\Classes\Helper::getLocaleCurrency($course->course_fee) ?? 'Free' }}</p> --}}
+                                                              <p class="h4 font-weight-bold text-dark";">
+                                                                {{ \App\Helpers\Classes\Helper::getLocaleCustomCurrency($course->course_fee, $siteSettingInfo->locale, $siteSettingInfo->local_currency) ?? 'Free' }}
+                                                                {{-- {{$siteSettingInfo->locale}} -- {{$siteSettingInfo->local_currency}} --}}
+                                                            </p>
+
                                                         </div>
+                                                        
 
                                                         {{--                                                        @unless($course->runningBatches->count() <= 0)--}}
                                                         <div class="col-md-12">
                                                             <a href="#"
                                                                onclick="checkAuthTrainee({{ $course->id }})"
-                                                               class="btn btn-success btn-sm float-right mb-1"
+                                                               class="btn btn-primary btn-lg btn-block mb-1"
                                                                style="visibility: {{ $course->runningBatches->count() <= 0  ? 'hidden' : 'visible'}}">{{ __('generic.apply') }}</a>
                                                         </div>
                                                         {{--                                                        @endunless--}}
@@ -473,9 +492,9 @@
                                                 </p>
                                             </div>
                                         </div>
-                                        <p class="float-right">
+                                        <p class="col-md-12">
                                             <a href="{{ route('frontend.institute-details', ['id' => $skillServiceProvider->institute_id]) }}"
-                                               class="btn btn-primary btn-sm">{{__('generic.details')}}</a>
+                                               class="btn btn-primary btn-md btn-block">{{__('generic.details')}}</a>
                                         </p>
                                     </div>
                                 </div>
@@ -513,7 +532,7 @@
                                                 <div class="card card-main mb-2 shadow-none bg-transparent">
                                                     <img class="slider-img slider-radius"
                                                          src="{{($galleryCategory->image) ? asset('/storage/'. $galleryCategory->image) : asset('/assets/default/Gallery-1'. ($key+1).'.jpg') }}">
-                                                    <h3 class="gallery-post-heading">{{ mb_strimwidth($galleryCategory->title, 0, 20) }} {{ strlen($galleryCategory->title) > 20 ?'...':'' }}</h3>
+                                                    {{-- <h3 class="gallery-post-heading">{{ mb_strimwidth($galleryCategory->title, 0, 20) }} {{ strlen($galleryCategory->title) > 20 ?'...':'' }}</h3> --}}
                                                 </div>
                                             </a>
                                         </div>

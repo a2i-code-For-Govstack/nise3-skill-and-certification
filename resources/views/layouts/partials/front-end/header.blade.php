@@ -4,7 +4,7 @@
     $navItems = app('navHeaders');
 @endphp
 
-<div class="container-fluid">
+{{-- <div class="container-fluid">
     <div class="container">
         <header class="navbar navbar-expand flex-column flex-md-row bd-navbar">
             <div class="navbar-nav-scroll" style="width: 100%">
@@ -57,21 +57,27 @@
             </div>
         </header>
     </div>
-</div>
+</div> --}}
 
-<nav class="container-fluid main-menu sticky-top navbar navbar-expand-lg navbar-light menu-bg-color">
-    <div class="container">
+<nav class="container-fluid main-menu sticky-top navbar navbar-expand-lg navbar-light menu-bg-color ">
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#">YOUTH ENROLLMENT AND CERTIFICATION</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon">
+                <span class="navbar-toggler-icon">   
+                    <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+                </span>
+            </span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <!-- Left menu items -->
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav ">
                 <!-- Left menu item empty -->
                 <li class="nav-item {{ request()->is('/') ? 'active-menu' : '' }}">
                     <a href="{{ route('frontend.main') }}"
-                       class="btn ">{{__('generic.home')}}</a>
+                       class="btn nav-effect">{{__('generic.home')}}
+                    </a>
                 </li>
 
                 {{-- @if($currentInstitute)
@@ -90,71 +96,70 @@
 
                 @if(!$currentInstitute)
                     <li class="nav-item {{ request()->is('ssp-list*') ? 'active-menu' : '' }}">
-                        <a href="{{ route('frontend.institute-list') }}" class="btn ">Service Providers</a>
+                        <a href="{{ route('frontend.institute-list') }}" class="btn nav-effect ">Service Providers</a>
                     </li>
                 @endif
 
 
                 <li class="nav-item {{ ($currentInstitute ? request()->is($currentInstitute->slug. '/courses-search*') : request()->is('courses-search*')) ? 'active-menu' : '' }}">
                     <a href="{{ route('frontend.course_search', ['instituteSlug' => $currentInstitute->slug ?? '']) }}"
-                       class="btn ">{{__('generic.courses')}}</a>
+                       class="btn nav-effect">{{__('generic.courses')}}</a>
                 </li>
 
 
                 <li class="nav-item {{ ($currentInstitute ? request()->is($currentInstitute->slug. '/skill-videos*') : request()->is('skill-videos*')) ? 'active-menu' : '' }}">
                     <a href="{{ route('frontend.skill_videos', $currentInstitute->slug ?? '') }}"
-                       class="btn ">{{__('generic.videos')}}</a>
+                       class="btn nav-effect">{{__('generic.videos')}}</a>
                 </li>
 
                 <li class="nav-item {{ ($currentInstitute ? request()->is($currentInstitute->slug. '/general-ask-page*') : request()->is('general-ask-page*'))? 'active-menu' : '' }}">
                     <a href="{{ route('frontend.general-ask-page', $currentInstitute->slug ?? '') }}"
-                       class="btn">{{__('generic.faq')}}</a>
+                       class="btn nav-effect">{{__('generic.faq')}}</a>
                 </li>
 
                 @if($currentInstitute && $currentInstitute->slug)
                     <li class="nav-item {{ request()->is($currentInstitute->slug. '/contact-us-page*') ? 'active-menu' : '' }}">
                         <a href="{{ route('frontend.contact-us-page', $currentInstitute->slug) }}"
-                           class="btn">{{__('generic.contact')}}</a>
+                           class="btn nav-effect">{{__('generic.contact')}}</a>
                     </li>
                 @endif
 
-            </ul>
-
-
-            <!-- Right menu items -->
-            <ul class="nav navbar-nav navbar-right">
                 @if(!\Illuminate\Support\Facades\Auth::guard('web')->check())
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            SignIn/SignUp
-                        </button>
-                        <div class="dropdown-menu menu-bg-color" aria-labelledby="dropdownMenuButton">
-                            @if(!auth()->guard('web')->check())
-                                <a class="btn dropdown-item {{ request()->is('trainee-registrations') ? 'active' : '' }}"
-                                   href="{{ route('frontend.trainee-registrations.index') }}"
-                                   id="bd-versions" aria-haspopup="true">
-                                    <i class="fa fa-file"> </i>&nbsp; {{__('generic.trainee_registration')}}
+
+                    @if(!auth()->guard('web')->check())
+                   
+                        <form class="form-inline">
+                            <button class="btn btn-sm btn-dark" type="button">
+                                <a class="{{ request()->is('trainee-registrations') ? 'active' : '' }}"
+                                    href="{{ route('frontend.trainee-registrations.index') }}"
+                                    id="bd-versions" aria-haspopup="true">
+                                    {{-- {{__('generic.trainee_registration')}} --}}
+                                    Sign up
                                 </a>
+                            </button>
 
-
-                                {{-- <a class="btn dropdown-item {{ request()->is('ssp-registration') ? 'active' : '' }}"
+                            {{-- <a class="btn dropdown-item {{ request()->is('ssp-registration') ? 'active' : '' }}"
                                    href="{{ route('frontend.ssp-registration') }}"
                                    id="bd-versions" aria-haspopup="true">
                                     <i class="fa fa-file"> </i>&nbsp; {{__('generic.ssp_registration')}}
                                 </a> --}}
-                            @endif
 
-                            @if(!\Illuminate\Support\Facades\Auth::guard('web')->check())
-                                <a class="dropdown-item" href="{{ route('admin.login-form') }}"
-                                   id="bd-versions">
-                                    <i class="far fa-user"></i>&nbsp; {{__('generic.login')}}
-                                </a>
-                            @endif
-                        </div>
-                    </div>
+                        </form>
+
+                    @endif
+
+                        @if(!\Illuminate\Support\Facades\Auth::guard('web')->check())
+                                <form class="form-inline">
+                                    <button class="btn btn-sm btn-light" type="button">
+                                        <a href="{{ route('admin.login-form') }}" class="text-dark" id="bd-versions">
+                                            {{-- {{__('generic.login')}} --}}
+                                            Log in
+                                        </a>                                        
+                                    </button>
+                                </form>
+                        @endif
+                        
                 @endif
-
 
                 @if(\App\Helpers\Classes\AuthHelper::checkAuthUser())
                     <li class="nav-item dropdown">
@@ -193,6 +198,7 @@
                         </form>
                     </li>
                 @endif
+
             </ul>
         </div>
     </div>
