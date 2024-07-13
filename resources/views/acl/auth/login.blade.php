@@ -76,9 +76,9 @@
     </div>
  --}}
 
-<div class="">
+<div class="container-fluid">
         <div class="text-center">
-            <div class="row" style="height: 100vh">
+            <div class="row" style="height: 60rem">
                 <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #168fd3">
                     <div class="py-5 my-5">
                         <img class="img-fluid" src="/assets/testImageDummy/authentication.svg" alt="" style="height: 40rem">
