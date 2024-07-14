@@ -31,7 +31,7 @@
 
 
             <!--footer widget one-->
-            <div class="col-md-4 col-sm-12 footer-item mt-xl-3 mt-lg-5">
+            <div class="col-md-6 d-none d-md-block footer-item mt-xl-3 mt-lg-5">
                 <div class="footer-widget">
                     <div class="container">
                         <div class="row">
@@ -55,19 +55,19 @@
                     <div class="footer-widget-address">
                         <h3 class="mb-3 text-white">{{ __('generic.contact') }}</h3>
                         <p class="text-white">
-                            <i class="fa fa-home text-white" aria-hidden="true"></i>
+                            <i class="fa fa-home text-white d-none d-sm-block" aria-hidden="true"></i>
                             {{ $currentInstitute && !empty($currentInstitute->address) ? $currentInstitute->address : $site_address }}
                         </p>
 
                         <p>
-                            <i class="fa fa-envelope text-white" aria-hidden="true"></i>
+                            <i class="fa fa-envelope text-white d-none d-sm-block" aria-hidden="true"></i>
                             <a class="footer-email text-white"
                                 href="mailto:{{ $currentInstitute && !empty($currentInstitute->email) ? $currentInstitute->email : $site_email }}">
                                 {{ $currentInstitute && !empty($currentInstitute->email) ? $currentInstitute->email : $site_email }}
                             </a>
                         </p>
                         <p>
-                            <i class="fas fa-mobile text-white"></i>
+                            <i class="fas fa-mobile text-white d-none d-sm-block"></i>
                             &nbsp
                             <a class="text-white"
                                 href="tel:{{ $currentInstitute && !empty($currentInstitute->mobile) ? $currentInstitute->mobile : $site_mobile }}">
@@ -80,16 +80,18 @@
                 <!--/ footer widget Two-->
 
                 <!--footer widget Three-->
-                <div class="col-md-6 col-sm-6 footer-item   ">
-                    <div class=" footer-widget-quick-links">
+                <div class="col-md-6 pl-md-5 ml-md-5 col-sm-6 footer-item">
+                    <div class="footer-widget-quick-links">
                         <h3 class="mb-3 text-white">{{ __('generic.important_link') }} </h3>
                         <ul>
 
                             {{-- <li><i class="fa fa-angle-right"></i><a href="{{url('/')}}#running_courses">{{__('generic.online_course')}}</a></li> --}}
-                            <li><i class="fa fa-angle-right text-white"></i>
+                            <li class="text-nowrap">
+                                {{-- <i class="fa fa-angle-right text-white d-none d-sm-block"></i> --}}
                                 <a class="text-white"
                                     href="{{ route('frontend.course_search', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">
-                                    {{ __('generic.online_course') }}</a>
+                                    {{ __('generic.online_course') }}
+                                </a>
                             </li>
 
                             {{-- <li><i class="fa fa-angle-right"></i> <a href="{{route('frontend.static-content.show', ['page_id' => 'aboutus', 'instituteSlug' => $currentInstitute->slug ?? ''])}}">{{__('generic.about_us')}}</a></li>
@@ -101,7 +103,8 @@
                             @foreach ($staticPageFooter as $key => $item)
                                 @if ($currentInstitute)
                                     @if ($currentInstitute->id == $item->institute_id)
-                                        <li><i class="fa fa-angle-right text-white"></i>
+                                        <li>
+                                            {{-- <i class="fa fa-angle-right text-white d-none d-sm-block"></i> --}}
                                             <a class="text-white"
                                                 href="{{ route('frontend.static-content.show', ['page_id' => $item->page_id, 'instituteSlug' => $currentInstitute->slug]) }}">
                                                 {{ $item->title }}</a>
@@ -110,7 +113,7 @@
                                 @else
                                     @if (!$item->institute_id)
                                         <li>
-                                            <i class="fa fa-angle-right text-white"></i>
+                                            {{-- <i class="fa fa-angle-right text-white d-none d-sm-block"></i> --}}
                                             <a class="text-white"
                                                 href="{{ route('frontend.static-content.show', ['page_id' => $item->page_id, 'instituteSlug' => '']) }}">
                                                 {{ $item->title }}</a>
@@ -123,18 +126,26 @@
                                 {{-- <li><i class="fa  fa-angle-right"></i> <a href="{{url($currentInstitute->slug)}}#event_area">{{__('generic.events')}}</a></li> --}}
 
 
-                                <li><i class="fa fa-angle-right text-white"></i> <a class="text-white"
-                                        href="{{ route('frontend.advice-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.feedback') }}</a>
+                                <li>
+                                    {{-- <i class="fa fa-angle-right text-white d-none d-sm-block"></i> --}}
+                                    <a class="text-white"
+                                        href="{{ route('frontend.advice-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.feedback') }}
+                                    </a>
                                 </li>
-                                <li><i class="fa fa-angle-right text-white"></i> <a class="text-white"
-                                        href="{{ route('frontend.contact-us-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.contact') }}</a>
+                                <li>
+                                    {{-- <i class="fa fa-angle-right text-white d-none d-sm-block"></i> --}}
+                                    <a class="text-white"
+                                        href="{{ route('frontend.contact-us-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.contact') }}
+                                    </a>
                                 </li>
                             @endif
 
 
                             <li>
-                                <i class="fa fa-angle-right text-white"></i> <a class="text-white"
-                                    href="{{ route('frontend.general-ask-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.faq') }}</a>
+                                {{-- <i class="fa fa-angle-right text-white"></i> --}}
+                                <a class="text-white"
+                                    href="{{ route('frontend.general-ask-page', ['instituteSlug' => $currentInstitute->slug ?? '']) }}">{{ __('generic.faq') }}
+                                </a>
                             </li>
 
                             @guest
@@ -149,8 +160,11 @@
                                     <i class="fa fa-file"> </i>&nbsp; {{__('generic.ssp_registration')}}
                                 </a> --}}
 
-                                    <li><i class="fa fa-angle-right text-white"></i> <a class="text-white"
-                                            href="{{ route('frontend.ssp-registration') }}">{{ __('generic.ssp_registration') }}</a>
+                                    <li>
+                                        {{-- <i class="fa fa-angle-right text-white"></i> --}}
+                                        <a class="text-white"
+                                            href="{{ route('frontend.ssp-registration') }}">{{ __('generic.ssp_registration') }}
+                                        </a>
                                     </li>
                                 @endif
                             @endguest

@@ -78,15 +78,15 @@
 
 <div class="container-fluid">
         <div class="text-center">
-            <div class="row" style="height: 60rem">
-                <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #168fd3">
+            <div class="row">
+                <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #C0F0FF">
                     <div class="py-5 my-5">
-                        <img class="img-fluid" src="/assets/testImageDummy/authentication.svg" alt="" style="height: 40rem">
+                        <img class="img-fluid" src="/assets/testImageDummy/authentication.svg" alt="" style="height: 53vh">
                     </div>
                 </div>
                 <div class="col-md-6 align-content-center">
                     <div class="container col-xl-8 col-lg-10 col-md-12">
-                        <form action="{{route('admin.login')}}" method="post" id="login" autocomplete="off" class="bg-light border  p-5 login-form">
+                        <form action="{{route('admin.login')}}" method="post" id="login" autocomplete="off" class=" py-5 px-sm-5 p-md-5 login-form">
                             {{ csrf_field() }}
                             <div class="form-row">
                                 <div class="container-fluid">
@@ -142,7 +142,7 @@
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button class="btn btn-primary btn-block" type="submit" name="signin">Login</button>
+                                    <button class="btn btn-block text-white font-weight-bold" type="submit" name="signin" style="background-color: #671688">Sign In</button>
                                 </div>
                             </div>
                         </form>
