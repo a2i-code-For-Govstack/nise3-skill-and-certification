@@ -9,11 +9,11 @@
     {{ $currentInstitute && $currentInstitute->title ? strtoupper($currentInstitute->title)."-".$currentFileName : env('APP_NAME')."-".$currentFileName }}
 @endsection
 
-@section('header', '')
-@section('footer', '')
+{{-- @section('header', '')
+@section('footer', '') --}}
 
 @section('full_page_content')
-
+{{-- 
     <div class="bitac-login-area">
         <div class="login-area text-center">
             <div class="row">
@@ -29,14 +29,14 @@
                             <div class="input-icon">
                                 <i class="fa fa-user"></i>
                                 <input class="form-control custom_input_field" type="text" autocomplete="off"
-                                       placeholder="{{__('generic.email')}}" name="email">
+                                    placeholder="{{__('generic.email')}}" name="email">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-icon">
                                 <i class="fa fa-lock"></i>
                                 <input class="form-control custom_input_field" type="password" autocomplete="off"
-                                       placeholder="{{__('generic.password')}}" name="password">
+                                    placeholder="{{__('generic.password')}}" name="password">
                             </div>
                         </div>
                         <div class="form-actions">
@@ -47,7 +47,7 @@
 
                         <div class="row">
                             <div class="col-md-12 col-sm-5 help-desk pt-4">
-                                <h4>{{__('generic.help_desk')}} {{--<i class="fa fa-question"></i> --}}</h4>
+                                <h4>{{__('generic.help_desk')}}</h4>
                                 <p><i class="fa fa-phone"></i>
                                     <a href="tel:{{!empty($currentInstitute->primary_phone) ? $currentInstitute->primary_phone:'+88-02-8870680'}}">
                                         {{!empty($currentInstitute->primary_phone)?$currentInstitute->primary_phone:'+88-02-8870680'}}
@@ -74,11 +74,89 @@
             </div>
         </div>
     </div>
+ --}}
+
+<div class="container-fluid">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #C0F0FF">
+                    <div class="py-5 my-5">
+                        <img class="img-fluid" src="/assets/testImageDummy/authentication.svg" alt="" style="height: 53vh">
+                    </div>
+                </div>
+                <div class="col-md-6 align-content-center">
+                    <div class="container col-xl-8 col-lg-10 col-md-12">
+                        <form action="{{route('admin.login')}}" method="post" id="login" autocomplete="off" class=" py-5 px-sm-5 p-md-5 login-form">
+                            {{ csrf_field() }}
+                            <div class="form-row">
+                                <div class="container-fluid">
+                                    <h1 class="title my-3">Sign in</h1>
+                                </div>
+                                <div class="col-12 form-group text-left">
+                                    <div class="text-left">
+                                        <label for="email" class="font-weight-normal">
+                                            {{ __('generic.email') }}
+                                            <span class="required">*</span>
+                                        </label>
+                                    </div>
+                                    <div class="input-group mb-3 col-12 input-icon">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-user"></i>
+                                            </span>
+                                        </div>
+                                        <input name="email" type="text" value="" class="form-control custom_input_field"
+                                            id="email" placeholder="{{__('generic.email')}}" autocomplete="off"
+                                        />
+                                    </div>
+                                </div>
+                                <div class="col-12 form-group text-left">
+                                    <div class="text-left">
+                                        <label for="password" class="font-weight-normal">
+                                            {{__('generic.password')}}
+                                            <span class="required">*</span>
+                                        </label>
+                                   </div>
+                                    <div class="input-group mb-3 col-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="basic-addon1">
+                                                <i class="fas fa-lock"></i>
+                                            </span>
+                                        </div>
+                                        <input name="password" type="password" value="" class="input form-control"
+                                            id="password" placeholder="password" required="true" aria-label="password"
+                                            aria-describedby="basic-addon1" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" onclick="password_show_hide();">
+                                                <i class="fas fa-eye" id="show_eye"></i>
+                                                <i class="fas fa-eye-slash d-none" id="hide_eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group text-nowrap form-check text-left">
+                                        <input type="checkbox" name="remember" class="form-check-input" id="remember_me" />
+                                        <label class="form-check-label" for="remember_me">Remember me</label>
+                                        {{-- Logic not implemented for Rember me --}}
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-block text-white font-weight-bold" type="submit" name="signin" style="background-color: #671688">Sign In</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @push('css')
         <style>
-            /* Bitac login CSS*/
-            .bitac-login-area {
+            /* Old CSS start */
+            /* Bitac login CSS */
+            /* .bitac-login-area {
                 background: url(http://skills.gov.bd/bitac_cms/img/back_9.png);
                 background-repeat: no-repeat;
                 background-size: cover;
@@ -88,7 +166,6 @@
             }
 
             .login-form {
-                /*background: #ebebeb;*/
                 padding: 44px;
                 background: url(http://skills.gov.bd/bitac_cms/assets/admin/pages/img/bg-white-lock.png);
                 background-repeat: no-repeat;
@@ -141,7 +218,7 @@
 
             .visible-ie9 {
                 /* display: none; */
-            }
+            /* }
 
             .visible-ie8 {
                 display: none;
@@ -173,6 +250,8 @@
                 text-align: justify !important;
             }
 
+            /* old css end */ */
+
         </style>
     @endpush
 
@@ -196,6 +275,24 @@
                     htmlForm.submit();
                 }
             });
+        </script>
+
+        <script>
+            function password_show_hide() {
+                var x = document.getElementById("password");
+                var show_eye = document.getElementById("show_eye");
+                var hide_eye = document.getElementById("hide_eye");
+                hide_eye.classList.remove("d-none");
+                if (x.type === "password") {
+                    x.type = "text";
+                    show_eye.style.display = "none";
+                    hide_eye.style.display = "block";
+                } else {
+                    x.type = "password";
+                    show_eye.style.display = "block";
+                    hide_eye.style.display = "none";
+                }
+            }
         </script>
     @endpush
 

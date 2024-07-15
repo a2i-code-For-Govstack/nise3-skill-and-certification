@@ -129,7 +129,11 @@
                     @if(!auth()->guard('web')->check())
                    
                         <form class="form-inline">
-                            <button class="btn btn-sm btn-dark" type="button">
+                            <button class="btn btn-sm btn-dark mx-1" type="button"
+                                style="
+                                background: rgba(0, 0, 0, 0.34);
+                                box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+                                border-radius: 12px;">
                                 <a class="{{ request()->is('trainee-registrations') ? 'active' : '' }}"
                                     href="{{ route('frontend.trainee-registrations.index') }}"
                                     id="bd-versions" aria-haspopup="true">
@@ -150,7 +154,11 @@
 
                         @if(!\Illuminate\Support\Facades\Auth::guard('web')->check())
                                 <form class="form-inline">
-                                    <button class="btn btn-sm btn-light" type="button">
+                                    <button class="btn btn-sm btn-light mx-1" type="button"
+                                        style="
+                                            background: #FFFFFF;
+                                            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                                            border-radius: 12px;">
                                         <a href="{{ route('admin.login-form') }}" class="text-dark" id="bd-versions">
                                             {{-- {{__('generic.login')}} --}}
                                             Log in
