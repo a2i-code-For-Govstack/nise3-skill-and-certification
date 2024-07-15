@@ -59,7 +59,7 @@
     </div>
 </div> --}}
 
-<nav class="container-fluid main-menu sticky-top navbar navbar-expand-lg navbar-light menu-bg-color ">
+<nav class="container-fluid main-menu sticky-top navbar navbar-expand-lg navbar-light menu-bg-color" style="height: 60px">
     <div class="container-fluid">
         <a class="navbar-brand text-white" href="#">YOUTH ENROLLMENT AND CERTIFICATION</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
