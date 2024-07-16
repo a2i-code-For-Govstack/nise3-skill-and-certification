@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #C0F0FF">
                 <div class="py-5 my-5">
-                    <img class="img-fluid" src="/assets/testImageDummy/signup.svg" alt="" style="height: 62vh" width="100%">
+                    <img class="img-fluid" src="/assets/testImageDummy/signup.svg" alt="" style="height: 72vh" width="100%">
                 </div>
             </div>
-            <div class="col-md-6 align-content-center bg-white">
-                <div class="px-lg-3 px-xl-5 px-md-3 px-sm-5">
+            <div class="col-md-6 align-content-center bg-white d-flex justify-content-center">
+                <div class="align-self-center col-xl-9">
                     <form action="{{ route('frontend.trainee-registrations.store') }}" method="post"
                       class="trainee-registration-form">
                     @csrf
@@ -60,7 +60,7 @@
                                                     value="{{ old('date_of_birth') }}">
                                             </div>
 
-                                            <div class="form-group col-xl-6 col-lg-8">
+                                            <div class="form-group col-xl-8 col-lg-8">
                                                 <label class="font-weight-normal" for="gender">{{ __('generic.gender') }}<span
                                                         class="required">*</span> :</label>
                                                 <div
@@ -94,7 +94,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="form-group col-lg-4 col-xl-6">
+                                            <div class="form-group col-lg-4 col-xl-4">
                                                 <label class="font-weight-normal" for="disable_status">{{ __('generic.disability') }}<span
                                                         class="required">*</span> :</label>
                                                 <div
@@ -192,7 +192,16 @@
 @endsection
 
 @push('css')
-
+   <style>
+    .form-control {
+        background-color: #ffff !important;
+        border: 1px solid #E9EAF0 !important;
+    }
+    .input-group-text {
+        background-color: #ffff !important;
+        border: 1px solid #E9EAF0 !important;
+    }
+   </style>
 @endpush
 @push('js')
     <x-generic-validation-error-toastr></x-generic-validation-error-toastr>
