@@ -80,7 +80,7 @@
                 <!--/ footer widget Two-->
 
                 <!--footer widget Three-->
-                <div class="col-md-6 pl-md-5 ml-md-5 col-sm-6 footer-item">
+                <div class="col-md-6 pl-md-5 ml-md-4 col-sm-6 footer-item">
                     <div class="footer-widget-quick-links">
                         <h3 class="mb-3 text-white">{{ __('generic.important_link') }} </h3>
                         <ul>

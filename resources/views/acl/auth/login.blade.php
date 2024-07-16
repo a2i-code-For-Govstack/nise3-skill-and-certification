@@ -76,16 +76,16 @@
     </div>
  --}}
 
-<div class="container-fluid">
+<div class="container-fluid login-section">
         <div class="text-center">
             <div class="row">
                 <div class="col-md-6 align-content-center d-none d-md-block" style="background-color: #C0F0FF">
                     <div class="py-5 my-5">
-                        <img class="img-fluid" src="/assets/testImageDummy/authentication.svg" alt="" style="height: 53vh">
+                        <img class="img-fluid login-image" src="/assets/testImageDummy/authentication.svg" alt="">
                     </div>
                 </div>
                 <div class="col-md-6 align-content-center">
-                    <div class="container col-xl-8 col-lg-10 col-md-12">
+                    <div class="container col-xl-8 col-lg-10 col-md-12 mb-5">
                         <form action="{{route('admin.login')}}" method="post" id="login" autocomplete="off" class=" py-5 px-sm-5 p-md-5 login-form">
                             {{ csrf_field() }}
                             <div class="form-row">
@@ -107,6 +107,7 @@
                                         </div>
                                         <input name="email" type="text" value="" class="form-control custom_input_field"
                                             id="email" placeholder="{{__('generic.email')}}" autocomplete="off"
+                                            style="background: #ffff; border: 1px solid #E9EAF0;"
                                         />
                                     </div>
                                 </div>
@@ -125,7 +126,8 @@
                                         </div>
                                         <input name="password" type="password" value="" class="input form-control"
                                             id="password" placeholder="password" required="true" aria-label="password"
-                                            aria-describedby="basic-addon1" />
+                                            aria-describedby="basic-addon1"
+                                            style="background: #ffff; border: 1px solid #E9EAF0;" />
                                         <div class="input-group-append">
                                             <span class="input-group-text" onclick="password_show_hide();">
                                                 <i class="fas fa-eye" id="show_eye"></i>
@@ -252,6 +254,59 @@
 
             /* old css end */ */
 
+            /* new CSS start */
+
+             .form-control {
+                background-color: #ffff !important;
+                border: 1px solid #E9EAF0 !important;
+            }
+            .input-group-text {
+                background-color: #ffff !important;
+                border: 1px solid #E9EAF0 !important;
+            }
+
+           @media screen and (max-height: 699px) {
+                .login-image {
+                    height: 40vh;
+                }
+           }
+
+            @media screen and (min-height: 700px) {
+                .login-image {
+                    height: calc(50vh - 40px);
+                }
+
+                .main-footer {
+                    position: fixed;
+                    bottom: 0;
+                    height: 190px;
+                    width: 100%;
+                }
+
+                .login-section {
+                    max-height: calc(100vh - 240px) !important;
+                }
+            }
+
+            @media screen and (min-height: 740px) {
+                .login-image {
+                    height: calc(53vh - 50px);
+                }
+            }
+
+            @media screen and (min-height: 800px) {
+                .login-image {
+                    height: calc(60vh - 50px);
+                }
+            }
+
+            @media screen and (min-height: 850px) {
+                .login-image {
+                    height: calc(65vh - 50px);
+                }
+            }
+
+            /* new CSS end */
         </style>
     @endpush
 
