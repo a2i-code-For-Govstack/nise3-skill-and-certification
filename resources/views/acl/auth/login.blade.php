@@ -256,7 +256,7 @@
 
             /* new CSS start */
 
-             .form-control {
+            .form-control {
                 background-color: #ffff !important;
                 border: 1px solid #E9EAF0 !important;
             }
@@ -271,7 +271,7 @@
                 }
            }
 
-            @media screen and (min-height: 700px) {
+            @media screen and (min-height: 700px) and (min-width: 1200px) {
                 .login-image {
                     height: calc(50vh - 40px);
                 }
