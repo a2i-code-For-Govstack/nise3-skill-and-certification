@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header">
-                        <h2 class="card-header-title text-center text-dark font-weight-bold">{{__('generic.courses')}}</h2>
+                    <div class="card-header px-5">
+                        <h2 class="card-header-title text-start mb-0 text-dark font-weight-bold">{{__('generic.courses')}}</h2>
                     </div>
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
@@ -165,11 +165,11 @@
                 }
 
                 .card-header-title {
-                    min-height: 48px;
+                    /* min-height: 48px; */
                 }
 
                 .card-bar-home-course img {
-                    height: 14vw;
+                    /* height: 14vw; */
                 }
 
                 .gray-color {
@@ -219,6 +219,12 @@
                     border: 1px solid #fff;
                     border-radius: 5px;
                 }
+
+                .card-main{
+                    background: #FFFFFF;
+                    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 15px;
+                }
             </style>
         @endpush
         @push('js')
@@ -264,35 +270,39 @@
 
                 const template = function (key, course, isRunningBatch, totalEnrolledTrainees) {
                     let html = '';
-                    html += '<div class="col-md-3 course-card">';
+                    html += '<div class="col-md-5 col-sm-6 col-lg-4 col-xl-3 course-card">';
                     html += '<a href="{{ route('frontend.course-details', ['course_id' => '__']) }}">'.replace('__', course.id);
                     html += '<div class="card card-main mb-2">';
                     html += '<div class="card-bar-home-course">';
                     html += '<div class="pb-3">';
-                    html += '<img class="slider-img border-top-radius"';
+                    html += '<img class="slider-img border-top-radius" style="border-radius: 15px 15px 0px 0px;"';
                     html += course?.cover_image ? 'src="{{asset('/storage/'. '__')}}"'.replace('__', course?.cover_image) + '" width="100%"' : 'src = "http://via.placeholder.com/640x360" width="100%"';
                     html += 'alt="' + course?.title + '">';
                     html += '</div>';
-                    html += '<div class="text-left pl-4 pr-4 pt-1 pb-1">';
-                    html += '<p class="font-weight-light"';
-                    //html += 'style="color: #9c36c6">' + getLocaleCurrency('{{ config('settings.locale') }}', '{{ config('settings.local_currency') }}', course.course_fee) ?? "Free" + '</p>';
-                    html += 'style="color: #9c36c6">' + getLocaleCurrency('{{ $siteSettingInfo->locale }}', '{{ $siteSettingInfo->local_currency }}', course.course_fee) ?? "Free" + '</p>';
-                    html += '<p class="font-weight-bold course-heading-wrap">' + course.title + '</p>';
+                    html += '<div class="pl-4 pr-4 pt-1 pb-1">';
+                    
+                    html += '<p class="font-weight-bold text-center course-heading-wrap" style="font-size: 1.5rem">' + course.title + '</p>';
 
-                    html += ' <p class="font-weight-light mb-1"><i';
+                    html += '<p class="font-weight-light text-dark text-start">More than 8yr Experience as Illustrator. Learn how to becoming professional Illustrator Now...</p>';
+                    
+                    html += ' <p class="font-weight-light mb-1 pl-2"><i';
                     html += ' class="fas fa-clock gray-color mr-2"></i>';
-                    html += course?.duration ? '<span class="course-p">Duration: ' + course.duration + ' Hour</span>' : 'Duration: {{ __('generic.duration_not_specified') }}';
+                    html += course?.duration ? '<span class="course-p font-weight-bold text-dark">Duration: ' + course.duration + ' Hour</span>' : 'Duration: {{ __('generic.duration_not_specified') }}';
                     html += '</p>';
 
                     html += '<div class="row">';
-                    html += '<p class=" col-md-12 font-weight-light mb-1"><i';
+                    html += '<p class=" col-md-12 font-weight-light pl-3 mb-1"><i';
                     html += 'class="fa fa-user gray-color mr-2"></i>';
-                    html += '<i class="fa fa-user gray-color mr-2"> </i><span class="course-p">Student(' + totalEnrolledTrainees + ')</span>';
+                    html += '<i class="fa fa-user gray-color mr-2"> </i><span class="course-p text-dark font-weight-bold">Enrolled Students: ' + totalEnrolledTrainees + '</span>';
                     html += '</p>';
 
+                    html += '<p class="font-weight-bold text-dark pl-3" style="font-size: 2rem"';
+                    //html += 'style="color: #9c36c6">' + getLocaleCurrency('{{ config('settings.locale') }}', '{{ config('settings.local_currency') }}', course.course_fee) ?? "Free" + '</p>';
+                    html += 'style="color: #9c36c6">' + getLocaleCurrency('{{ $siteSettingInfo->locale }}', '{{ $siteSettingInfo->local_currency }}', course.course_fee) ?? "Free" + '</p>';
+
                     if (isRunningBatch) {
-                        html += '<div class = "col-md-12">';
-                        html += '<a href="#" onclick="checkAuth(__)" class="btn btn-success btn-sm float-right"> {{__('generic.apply')}}</a>'.replaceAll('__', course.id);
+                        html += '<div class = "col-md-12 mb-3">';
+                        html += '<a href="#" onclick="checkAuth(__)" class="btn btn-success btn-lg btn-block font-weight-bold" style="background: #671688;border-radius: 12px;"> {{__('generic.apply')}}</a>'.replaceAll('__', course.id);
                         html += '</div>';
                     } else {
                         html += '<div class = "col-md-12">';

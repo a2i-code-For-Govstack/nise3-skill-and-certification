@@ -13,8 +13,10 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header p-5">
-                        <h2 class="card-header-title text-center text-dark font-weight-bold">{{ __('generic.ssps') }}</h2>
+                    <div class="card-header px-5">
+                        <h2 class="card-header-title text-start text-dark font-weight-bold mb-0">
+                            {{ __('generic.ssps') }}
+                        </h2>
                     </div>
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
@@ -108,7 +110,7 @@
                 }
 
                 .card-header-title {
-                    min-height: 48px;
+                    /* min-height: 48px; */
                 }
 
                 .card-bar-home-course img {
@@ -163,6 +165,12 @@
                     margin-top: 0.75rem;
                     margin-bottom: 0.75rem;
                 }
+
+                .card-main{
+                    background: #FFFFFF;
+                    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
+                    border-radius: 20px;
+                }
             </style>
         @endpush
         @push('js')
@@ -170,25 +178,25 @@
             <script>
                 const template = function (item) {
                     let html = '';
-                    html += '<div class="col-md-3">';
+                    html += '<div class="col-sm-6 col-lg-4 col-xl-3">';
                     html += '<div class="card card-main mb-3">';
                     html += '<div class="card-bar-institute-list">';
-                    html += '<a href="{{ url('__')}}"'.replace('__', item.slug);
+                    html += '<a href="{{ url('__')}}" class="text-dark"'.replace('__', item.slug);
                     html += '<div class="">';
-                    html += '<img class="slider-img border-top-radius"';
-                    html += item.logo ? 'src="{{asset('/storage/'. '__')}}"'.replace('__', item.logo) + '" width="100%" height="150px">' : 'src = "http://via.placeholder.com/640x360" width="100%" height="150px"' + '>';
+                    html += '<img class="slider-img border-top-radius" style="border-radius: 20px 20px 0px 0px;"';
+                    html += item.logo ? 'src="{{asset('/storage/'. '__')}}"'.replace('__', item.logo) + '" width="100%" height="150px">' : 'src = "http://via.placeholder.com/640x360" width="100%" height="250px"' + '>';
                     html += '</div>';
                     html += '<div class="text-left p-4">';
-                    html += '<h5 class="font-weight-bold">SSP Information</h5>';
+                    html += '<h5 class="font-weight-bold" style="font-size: 1.5rem">SSP Information</h5>';
+                    // html += '<hr/>';
+                    html += '<p class=" course-heading-wrap font-weight-normal">SSP Name: ' + item?.title + '</p>';
+                    html += '<p class="course-heading-wrap font-weight-normal"><span>Office Head: </span> ' + item?.office_head_post + ' ' + item?.office_head_name + '</p>';
                     html += '<hr/>';
-                    html += '<p class=" course-heading-wrap">SSP Name: ' + item?.title + '</p>';
-                    html += '<p class="course-heading-wrap"><span>Office Head: </span> ' + item?.office_head_post + ' ' + item?.office_head_name + '</p>';
-                    html += '<hr/>';
-                    html += '<h5 class="font-weight-bold">Contact Information</h5>';
-                    html += '<hr/>';
-                    html += '<p class=" course-heading-wrap">Name: ' + item?.contact_person_name + '</p>';
-                    html += '<p class=" course-heading-wrap">Mobile: ' + item?.contact_person_mobile + '</p>';
-                    html += '<p class="course-heading-wrap">Address: ' + item?.address ?? " " + '</p>';
+                    html += '<h5 class="font-weight-bold" style="font-size: 1.5rem">Contact Information</h5>';
+                    // html += '<hr/>';
+                    html += '<p class=" course-heading-wrap font-weight-normal">Name: ' + item?.contact_person_name + '</p>';
+                    html += '<p class=" course-heading-wrap font-weight-normal">Mobile: ' + item?.contact_person_mobile + '</p>';
+                    html += '<p class="course-heading-wrap font-weight-normal">Address: ' + item?.address ?? " " + '</p>';
                     html += '</div>';
                     html += '</a>';
 

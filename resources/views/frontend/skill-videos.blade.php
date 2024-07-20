@@ -10,12 +10,12 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+        <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header">
-                        <h2 class="text-center text-dark font-weight-bold">{{__('generic.videos')}}</h2>
+                    <div class="card-header px-5">
+                        <h2 class="text-start mb-0 text-dark font-weight-bold">{{__('generic.videos')}}</h2>
                     </div>
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
@@ -90,7 +90,7 @@
                                 </form>
                             </div>
                         </div>
-                        <div class="row justify-content-center" id="container-skill-videos"></div>
+                        <div class="row justify-content-center" style="height: 40vh" id="container-skill-videos"></div>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="prev-next-button float-right">
