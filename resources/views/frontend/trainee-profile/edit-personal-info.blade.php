@@ -25,14 +25,16 @@
         }
 
         .back-to-profile {
-            border-color: #671688 !important;
+            /* border-color: #FFFFFF !important; */
             color: black !important;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
         }
 
         .back-to-profile:hover {
-            border-color: #671688 !important;
             background-color: #671688 !important;
             color: white !important;
+
         }
 
         .custom-button-style {
@@ -54,11 +56,14 @@
             <div class="col-md-12">
                 <div class="card mt-4">
                     <div class="card-header">
-                        <div class="card-title text-bold">{{ __('frontend.trainee.edit_personal_information') }}</div>
+                        <div class="card-title text-bold" style="transform: translateY(15%)">
+                            {{ __('frontend.trainee.edit_personal_information') }}
+                        </div>
                         <div class="card-tools">
                             <a href="{{ route('frontend.trainee') }}"
-                                class="btn btn-sm btn-outline-primary btn-rounded back-to-profile">
-                                <i class="fas fa-backward"></i> {{ __('generic.back_to_profile') }}
+                                class="btn btn-sm btn-rounded back-to-profile font-weight-bold">
+                                <!-- <i class="fas fa-backward"></i> -->
+                                {{ __('generic.back_to_profile') }}
                             </a>
                         </div>
                     </div>

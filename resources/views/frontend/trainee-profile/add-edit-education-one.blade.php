@@ -21,14 +21,16 @@
         }
 
         .back-to-profile {
-            border-color: #671688 !important;
+            /* border-color: #FFFFFF !important; */
             color: black !important;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            border-radius: 12px;
         }
 
         .back-to-profile:hover {
-            border-color: #671688 !important;
             background-color: #671688 !important;
             color: white !important;
+
         }
 
         .custom-button-style {
@@ -55,13 +57,15 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header  academic-qualifications">
-                                <h3 class="card-title font-weight-bold"><i class="fa fa-address-book"> </i>
+                                <h3 class="card-title font-weight-bold" style="transform: translateY(30%)">
+                                    <!-- <i class="fa fa-address-book"> </i> -->
                                     {{ __('generic.academic_qualification') }}
                                 </h3>
                                 <div class="card-tools">
                                     <a href="{{ route('frontend.trainee') }}"
-                                        class="btn btn-sm btn-outline-primary btn-rounded back-to-profile">
-                                        <i class="fas fa-backward"></i> {{ __('generic.back_to_profile') }}
+                                        class="btn btn-sm btn-rounded back-to-profile font-weight-bold">
+                                        <!-- <i class="fas fa-backward"></i>  -->
+                                        {{ __('generic.back_to_profile') }}
                                     </a>
                                 </div>
                             </div>
@@ -130,8 +134,9 @@
                                                             name="academicQualification[education1][subject]" id="subject"
                                                             class="form-control" value=""
                                                             placeholder="{{ __('generic.subject') }}">
-                                                        <span
-                                                            class="text-info">{{ __('frontend.trainee.like_subject') }}</span>
+                                                        <div class="text-info m-2">
+                                                            {{ __('frontend.trainee.like_subject') }}
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-4"></div>
                                                 </div>
@@ -144,8 +149,9 @@
                                                             name="academicQualification[education1][result]" id="result"
                                                             class="form-control" value=""
                                                             placeholder="{{ __('generic.result') }}">
-                                                        <span
-                                                            class="text-info">{{ __('frontend.trainee.like_result') }}</span>
+                                                        <div class="text-info m-2">
+                                                            {{ __('frontend.trainee.like_result') }}
+                                                        </div>
                                                     </div>
                                                     <div class="col-md-4"></div>
                                                 </div>

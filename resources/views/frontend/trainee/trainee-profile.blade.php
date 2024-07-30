@@ -16,12 +16,13 @@
 
         .custom-button-style {
             background-color: #671688;
+            color: white !important;
             border-radius: 12px;
         }
 
         .custom-button-style:hover {
             background-color: #ffffff;
-            color: black;
+            color: black !important;
             border-color: #671688;
         }
 
@@ -53,13 +54,14 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4>Personal Information</h4>
+                            <h4 style="transform: translateY(30%)">Personal Information</h4>
                         </div>
 
                         <div class="card-tools">
                             <a href="{{ route('frontend.edit-personal-info') }}"
-                                class="btn btn-sm btn-primary btn-rounded custom-button-style px-4 py-2 font-weight-bold">
-                                <i class="fas fa-plus-circle"></i> {{ __('admin.common.edit') }}
+                                class="btn btn-sm btn-rounded custom-button-style px-4 pt-2 pb-1 font-weight-bold">
+                                <!-- <i class="fas fa-plus-circle"></i> -->
+                                {{ __('admin.common.edit') }}
                             </a>
                         </div>
 
@@ -95,12 +97,13 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4>Education</h4>
+                            <h4 style="transform: translateY(30%)">Education</h4>
                         </div>
                         <div class="card-tools">
                             <a href="{{ route('frontend.add-edit-education', ['id' => $trainee->user_id]) }}"
-                                class="btn btn-sm btn-primary custom-button-style btn-rounded px-4 py-2 font-weight-bold">
-                                <i class="fas fa-plus-circle"></i> {{ __('admin.common.add') }}
+                                class="btn btn-sm btn-primary custom-button-style btn-rounded px-4 pt-2 pb-1 font-weight-bold">
+                                <!-- <i class="fas fa-plus-circle"></i> -->
+                                {{ __('admin.common.add') }}
                             </a>
                         </div>
                     </div>
@@ -286,12 +289,13 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="card-title">
-                            <h4 class="">Guardian</h4>
+                            <h4 class="" style="transform: translateY(30%)">Guardian</h4>
                         </div>
                         <div class="card-tools">
                             <a href="{{ route('frontend.add-guardian-info') }}"
-                                class="btn btn-sm btn-primary custom-button-style btn-rounded px-4 py-2 font-weight-bold">
-                                <i class="fas fa-plus-circle"></i> {{ __('admin.common.add') }}
+                                class="btn btn-sm btn-primary custom-button-style btn-rounded px-4 pt-2 pb-1 font-weight-bold">
+                                <!-- <i class="fas fa-plus-circle"></i>  -->
+                                {{ __('admin.common.add') }}
                             </a>
                         </div>
                     </div>
