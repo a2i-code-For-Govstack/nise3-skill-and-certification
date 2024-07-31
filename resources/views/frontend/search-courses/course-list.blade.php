@@ -18,9 +18,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header px-5">
-                        <h2 class="card-header-title text-start mb-0 text-dark font-weight-bold">{{__('generic.courses')}}</h2>
+                    <div class="card-header px-5" style="border-bottom: none">
+                        <h2 class="card-header-title text-start mb-0 text-dark font-weight-bold" style="transform: translateY(20%)">
+                            {{__('generic.courses')}}
+                        </h2>
                     </div>
+                    <hr class="mt-2 mb-0" style="background-color: transparent; border: 1px solid rgba(0, 0, 0, 0.125);">
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
                             <div class="col-md-12">

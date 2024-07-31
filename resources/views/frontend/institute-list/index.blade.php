@@ -13,11 +13,12 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card mb-2">
-                    <div class="card-header px-5">
-                        <h2 class="card-header-title text-start text-dark font-weight-bold mb-0">
+                    <div class="card-header px-5" style="border-bottom: none">
+                        <h2 class="card-header-title text-start text-dark font-weight-bold mb-0" style="transform: translateY(20%)">
                             {{ __('generic.ssps') }}
                         </h2>
                     </div>
+                    <hr class="mt-2 mb-0" style="background-color: transparent; border: 1px solid rgba(0, 0, 0, 0.125);">
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
                             <div class="col-md-12">
@@ -168,8 +169,8 @@
 
                 .card-main{
                     background: #FFFFFF;
-                    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25);
-                    border-radius: 20px;
+                    box-shadow: 5px 6px 4px rgba(0, 0, 0, 0.25) !important;
+                    border-radius: 15px;
                 }
             </style>
         @endpush
@@ -178,12 +179,12 @@
             <script>
                 const template = function (item) {
                     let html = '';
-                    html += '<div class="col-sm-6 col-lg-4 col-xl-3">';
+                    html += '<div class="col-md-5 col-sm-6 col-lg-4 col-xl-3">';
                     html += '<div class="card card-main mb-3">';
                     html += '<div class="card-bar-institute-list">';
                     html += '<a href="{{ url('__')}}" class="text-dark"'.replace('__', item.slug);
                     html += '<div class="">';
-                    html += '<img class="slider-img border-top-radius" style="border-radius: 20px 20px 0px 0px;"';
+                    html += '<img class="slider-img border-top-radius" style="border-radius: 15px 15px 0px 0px;"';
                     html += item.logo ? 'src="{{asset('/storage/'. '__')}}"'.replace('__', item.logo) + '" width="100%" height="150px">' : 'src = "http://via.placeholder.com/640x360" width="100%" height="250px"' + '>';
                     html += '</div>';
                     html += '<div class="text-left p-4">';

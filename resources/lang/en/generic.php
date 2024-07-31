@@ -423,7 +423,7 @@ return [
     'routines' => 'Routines',
     'home_page' => 'Home page',
     'courses_are_providing_training' => 'Courses are providing training',
-    'ssps' => 'skill service providers',
+    'ssps' => 'Skill Service Providers',
     'no_event_found' => 'No event found',
     'trainees_result' => 'Trainees result',
     'completed-batch.list' => 'Completed Batch List',
