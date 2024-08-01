@@ -26,9 +26,11 @@
 
         .back-to-profile {
             /* border-color: #FFFFFF !important; */
+            background-color: #ffffff;
             color: black !important;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px #00000040;
             border-radius: 12px;
+            font-weight: 700;
         }
 
         .back-to-profile:hover {
@@ -61,7 +63,7 @@
                         </div>
                         <div class="card-tools">
                             <a href="{{ route('frontend.trainee') }}"
-                                class="btn btn-sm btn-rounded back-to-profile font-weight-bold">
+                                class="btn btn-sm btn-rounded back-to-profile px-4 pt-2 pb-1">
                                 <!-- <i class="fas fa-backward"></i> -->
                                 {{ __('generic.back_to_profile') }}
                             </a>
@@ -84,9 +86,9 @@
                                                         <label for="profile_pic">
                                                             <img class="img-thumbnail rounded-circle"
                                                                 src="{{ $trainee->profile_pic ? asset('storage/' . $trainee->profile_pic) : 'https://via.placeholder.com/350x350?text=Profile+Picture' }}"
-                                                                style="width: 300px; height: 300px" alt="Profile pic" />
+                                                                style="width: 240px; height: 220px" alt="Profile pic" />
                                                             <span class="p-1 bg-gray"
-                                                                style="position: absolute; right: 0; bottom: 50%; border: 2px solid #afafaf; border-radius: 50%; overflow: hidden">
+                                                                style="position: absolute; right: 50%; bottom: 0; border: 2px solid #afafaf; border-radius: 50%; overflow: hidden">
                                                                 <i class="fa fa-pencil-alt text-white"></i>
                                                             </span>
                                                         </label>
@@ -189,8 +191,8 @@
 
                                     <div class="col-md-12">
                                         <input type="submit"
-                                            class="btn btn-primary float-right px-3 custom-button-style mr-4"
-                                            value="{{-- {{ __('admin.common.edit') }} --}} Save Chnages">
+                                            class="btn btn-sm btn-primary float-right px-3 pt-2 pb-1 custom-button-style"
+                                            value="{{-- {{ __('admin.common.edit') }} --}} Save Changes">
                                     </div>
 
                                     <div class="change-password row">
@@ -220,8 +222,8 @@
 
                                         <div class="col-md-12">
                                             <input type="submit"
-                                                class="btn btn-primary float-right custom-button-style mr-4"
-                                                value="{{-- {{ __('admin.common.edit') }}  --}}Change Password">
+                                            class="btn btn-sm btn-primary float-right custom-button-style px-3 pt-2 pb-1"
+                                            value="{{-- {{ __('admin.common.edit') }}  --}}Change Password">
                                         </div>
                                     </div>
                                 </div>

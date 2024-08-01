@@ -22,9 +22,11 @@
 
         .back-to-profile {
             /* border-color: #FFFFFF !important; */
+            background-color: #ffffff;
             color: black !important;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px #00000040;
             border-radius: 12px;
+            font-weight: 700;
         }
 
         .back-to-profile:hover {
@@ -63,7 +65,7 @@
                                 </h3>
                                 <div class="card-tools">
                                     <a href="{{ route('frontend.trainee') }}"
-                                        class="btn btn-sm btn-rounded back-to-profile font-weight-bold">
+                                        class="btn btn-sm btn-rounded back-to-profile px-4 pt-2 pb-1">
                                         <!-- <i class="fas fa-backward"></i>  -->
                                         {{ __('generic.back_to_profile') }}
                                     </a>
@@ -318,7 +320,7 @@
                     </div>
 
 
-                    <div class="row w-100 d-flex justify-content-center">
+                    <!-- <div class="row w-100 d-flex justify-content-center">
                         <div class="col-lg-3 col-md-4 p-1">
                             <button class="btn btn-info btn-rounded add_form_field"
                                 style="width: 100%;">{{ __('frontend.trainee.add_more') }} <i class="fa fa-plus"
@@ -328,12 +330,21 @@
                             <button type="submit" class="btn btn-success btn-rounded btn-md custom-button-style"
                                 style="width:100%; ">{{ __('generic.save') }}</button>
                         </div>
-                    </div>
+                    </div> -->
 
-                    {{-- <div class="col-sm-12 text-center pb-3">
-                        <button type="submit"
-                                class="btn btn-success btn-md" style="width:100%">{{ __('generic.save') }}</button>
-                    </div> --}}
+                    <div class="row w-100 d-flex justify-content-around">
+                      
+                            <button class="btn btn-info btn-rounded px-5 pb-1 pt-2 add_form_field" 
+                                style="border-radius: 12px;">
+                                {{ __('frontend.trainee.add_more') }}
+                                <i class="fa fa-plus" aria-hidden="true"></i>
+                            </button>
+                        
+                            <button type="submit" class="btn btn-success btn-rounded px-5 pb-1 pt-2 custom-button-style">
+                                {{ __('generic.save') }}
+                            </button>
+                        
+                    </div>
                 </form>
             </div><!-- /.card-body -->
             <div class="overlay" style="display: none">

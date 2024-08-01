@@ -32,9 +32,11 @@
 
         .back-to-profile {
             /* border-color: #FFFFFF !important; */
+            background-color: #ffffff;
             color: black !important;
-            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 4px #00000040;
             border-radius: 12px;
+            font-weight: 700;
         }
 
         .back-to-profile:hover {
@@ -67,7 +69,7 @@
                         </div>
                         <div class="card-tools">
                             <a href="{{ route('frontend.trainee') }}"
-                                class="btn btn-sm btn-rounded back-to-profile font-weight-bold">
+                                class="btn btn-sm btn-rounded back-to-profile px-4 pt-2 pb-1">
                                 <!-- <i class="fas fa-backward"></i> -->
                                 {{ __('generic.back_to_profile') }}
                             </a>
