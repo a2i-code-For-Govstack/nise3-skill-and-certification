@@ -12,8 +12,8 @@
 @section('content')
         <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card mb-2">
+            <div class="col-md-12 p-0">
+                <div class="card mb-0">
                     <!-- <div class="card-header px-5">
                         <h2 class="text-start mb-0 text-dark font-weight-bold">{{__('generic.videos')}}</h2>
                     </div> -->
@@ -22,7 +22,7 @@
                             {{__('generic.videos')}}
                         </h2>
                     </div>
-                    <hr class="mt-2 mb-0" style="background-color: transparent; border: 1px solid rgba(0, 0, 0, 0.125);">
+                     <hr class="mt-2 mb-0 mx-4" style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));">
                     <div class="card-background-white px-5 py-4">
                         <div class="row mb-3">
                             <div class="col-md-12">
