@@ -65,6 +65,14 @@
             transition: .5s;
         }
 
+        .dropdown-item:hover {
+            background-color: #400757;
+        }
+
+        .dropdown-menu {
+            padding: 8px;
+        }
+
         .navbar-right li a:hover {
             background: #E67E22;
             border-radius: unset;
