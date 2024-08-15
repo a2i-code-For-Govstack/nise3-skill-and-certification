@@ -1,8 +1,19 @@
-<nav class="main-header navbar navbar-fixed navbar-expand navbar-white navbar-light">
-    <ul class="navbar-nav">
+<nav class="main-header header-expand navbar navbar-fixed navbar-expand navbar-white navbar-light sticky-top"
+    style="top: 61px; width: -webkit-fill-available;">
+
+    <ul class="navbar-nav" style="display: flex; flex: auto">
+       <li class="nav-item">
+            <div class="toggle-btn pb-0" onclick="toggleSidebar()">
+                <i class="fas fa-bars" style="color:#671688; font-size:28px;"></i>
+            </div>
+       </li>
+
+       <li class="nav-item">
+        <a class="navbar-brand" href="#" style="padding-top: 8px">Dashboard</a>
+       </li>
         @if(\App\Helpers\Classes\AuthHelper::checkAuthUser())
             <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.dashboard')}}"><i class="fa fa-circle"></i></a>
+                <a class="nav-link" href="{{route('admin.dashboard')}}" style="padding-top: 12px"><i class="fa fa-circle"></i></a>
             </li>
         @else
             <li class="nav-item">
