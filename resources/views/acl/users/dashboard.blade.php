@@ -5,8 +5,8 @@
 @endsection
 @section('content')
     <div class="container-fluid">
+        <h2>Batch Analytics</h2>
         <div class="row">
-
             @foreach($adminInfo as $info)
                 <div class="col-md-3 col-sm-6 col-12">
                     <div class="info-box">
@@ -24,6 +24,92 @@
 
         </div>
     </div>
+
+    <div class="container-fluid">
+        <h2>Institute Management</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.institutes.index') }}" class="info-box">
+                    <span class="info-box-icon bg-primary"><i class="fas fa-university"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-primary">Total Institutes</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalInstitutesCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.branches.index') }}" class="info-box">
+                    <span class="info-box-icon bg-success"><i class="fas fa-code-branch"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-success">Total Branches</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalBranchesCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.training-centers.index') }}" class="info-box">
+                    <span class="info-box-icon bg-warning"><i class="fas fa-school"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-warning">Total Training Centers</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalTrainingCentersCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.courses.index') }}" class="info-box">
+                    <span class="info-box-icon bg-danger"><i class="fas fa-book"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-danger">Total Courses</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalCoursesCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- Events Section -->
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ __('Events Overview') }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                @if($events->isEmpty())
+                                    <p>{{ __('No events available.') }}</p>
+                                @else
+                                    <ul class="list-group">
+                                        @foreach($events as $event)
+                                            <li class="list-group-item">
+                                                <strong>{{ $event->caption }}</strong> <br>
+                                                <span>{{ \Carbon\Carbon::parse($event->date)->format('d M, Y h:i A') }}</span> <br>
+                                                <p>{{ $event->details }}</p>
+                                                <a href="{{ route('admin.events.show', $event->id) }}" class="btn btn-primary mt-2">
+                                                    View Details
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                            <div class="col-md-4">
+                                <div id='events-calender'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
 
     @if(\App\Helpers\Classes\AuthHelper::getAuthUser()->isTrainer())
         <section class="routine-calendar mt-5">
@@ -378,6 +464,109 @@
             });
             calendar.render();
 
+        });
+    </script>
+@endpush
+
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/locales-all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+    <script id="event-data" type="application/json">
+        {!! $events->map(function($event) {
+            return [
+                'title' => $event->caption,
+                'start' => $event->date,
+                'details' => $event->details,
+                'url' => route('admin.events.show', $event->id),
+            ];
+        })->toJson() !!}
+    </script>
+
+    <script>
+        $(function () {
+            let calendarEl = document.getElementById('events-calender');
+            let initialDate = '{{ date('Y-m-d') }}';
+            let initialLocaleCode = '{{ config('settings.locale_code') }}';
+
+            let events = JSON.parse(document.getElementById('event-data').textContent);
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialDate: initialDate,
+                height: 500,
+                aspectRatio: 1,
+                displayEventTime: false,
+                selectable: true,
+                events: events,
+                eventContent: function(info) {
+                    let dot = document.createElement('div');
+                    dot.style.width = '8px';
+                    dot.style.height = '8px';
+                    dot.style.backgroundColor = '#007bff';
+                    dot.style.borderRadius = '50%';
+                    dot.style.margin = 'auto';
+                    dot.style.marginTop = '5px';
+
+                    let container = document.createElement('div');
+                    container.style.display = 'flex';
+                    container.style.justifyContent = 'center';
+                    container.style.alignItems = 'center';
+                    container.style.height = '100%';
+                    container.appendChild(dot);
+
+                    return { domNodes: [container] };
+                },
+                eventDidMount: function (info) {
+                    let tooltipContent = `
+                        <div>
+                            <strong>${info.event.title}</strong><br>
+                            <p>${info.event.extendedProps.details}</p>
+                        </div>
+                    `;
+                    let tooltip = new bootstrap.Tooltip(info.el, {
+                        title: tooltipContent,
+                        html: true,
+                        placement: 'top',
+                        trigger: 'hover focus',
+                        container: 'body'
+                    });
+
+                    $(info.el).on('mouseenter', function() {
+                        tooltip.show();
+                    }).on('mouseleave', function() {
+                        setTimeout(() => {
+                            if (!$('.tooltip:hover').length) {
+                                tooltip.hide();
+                            }
+                        }, 300);
+                    });
+
+                    $(document).on('mouseleave', '.tooltip', function() {
+                        tooltip.hide();
+                    });
+                    
+                    $(info.el).on('click', function() {
+                        window.location.href = info.event.extendedProps.url;
+                    });
+                },
+                dateClick: function (info) {
+                    let eventDateTime = new Date(info.dateStr);
+                    eventDateTime = new Intl.DateTimeFormat('{{ config('settings.locale_code') }}', {
+                        weekday: 'long',
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric',
+                    }).format(eventDateTime);
+                    $('#eventDateTime').html(eventDateTime);
+                    const start = info.dateStr;
+                    eventsOfSpecificDate(start);
+                }
+            });
+
+            calendar.render();
         });
     </script>
 @endpush
