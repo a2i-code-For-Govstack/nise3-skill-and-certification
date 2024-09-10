@@ -70,6 +70,42 @@
             
         </div>
     </div>
+
+    <div class="container-fluid">
+        <h2>Trainee Applications</h2>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainees.index') }}" class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fas fa-user-graduate"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-info">Total Trainees</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalTraineesCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainee.registrations.index') }}" class="info-box">
+                    <span class="info-box-icon bg-secondary"><i class="fas fa-file-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-secondary">Pending Applications</span>
+                        <span class="info-box-number">{{ $dashboardStats['pendingRequestsCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainee.certificates.request') }}" class="info-box">
+                    <span class="info-box-icon bg-warning"><i class="fas fa-certificate"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-warning">Pending Certificate Requests</span>
+                        <span class="info-box-number">{{ $dashboardStats['pendingCertificateRequestsCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+            
+        </div>
+    </div>
     
     <!-- Events Section -->
     <div class="container-fluid">

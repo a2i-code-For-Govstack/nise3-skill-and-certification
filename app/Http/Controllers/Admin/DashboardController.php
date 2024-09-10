@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Institute;
 use App\Models\Branch;
 use App\Models\TrainingCenter;
+use App\Models\Trainee;
+use App\Models\TraineeCourseEnroll;
+use App\Models\CertificateRequest; 
 use App\Models\Course; 
 use App\Models\Event;
 use App\Services\DashboardService;
@@ -40,6 +43,9 @@ class DashboardController extends BaseController
         $totalBranchesCount = Branch::count();
         $totalTrainingCentersCount = TrainingCenter::count();
         $totalCoursesCount = Course::count();
+        $totalTraineesCount = Trainee::count();
+        $pendingRequestsCount = TraineeCourseEnroll::where('enroll_status', TraineeCourseEnroll::ENROLL_STATUS_PROCESSING)->count();
+        $pendingCertificateRequestsCount = CertificateRequest::where('row_status', '=', CertificateRequest::REQUESTED)->count();
 
         $events = Event::orderBy('date', 'asc')->where('date', '>=', now())->limit(3)->get();
 
@@ -49,6 +55,9 @@ class DashboardController extends BaseController
             'totalBranchesCount' => $totalBranchesCount,
             'totalTrainingCentersCount' => $totalTrainingCentersCount,
             'totalCoursesCount' => $totalCoursesCount,
+            'totalTraineesCount' => $totalTraineesCount,
+            'pendingRequestsCount' => $pendingRequestsCount,
+            'pendingCertificateRequestsCount' => $pendingCertificateRequestsCount,
         ];
 
         return view(self::VIEW_PATH . 'dashboard', ['adminInfo' => $adminInfo, 'dashboardStats' => $dashboardStats, 'events' => $events,]);
