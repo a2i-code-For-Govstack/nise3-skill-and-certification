@@ -9,9 +9,63 @@
 @endsection
 @section('content')
 
+    @if (!(AuthHelper::getAuthUser()->user_type_id == 4) && !(AuthHelper::getAuthUser()->user_type_id == 3))
+        <div class="container-fluid">
+            <h3 class="p-1">Institute Analytics</h3>
+            <div class="row">
+                @if (!(AuthHelper::getAuthUser()->user_type_id == 6))
+                    @if (!(AuthHelper::getAuthUser()->user_type_id == 5))
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <a href="{{ route('admin.institutes.index') }}" class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fas fa-university"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-primary">Total Institutes</span>
+                                    <span class="info-box-number">{{ $dashboardStats['totalInstitutesCount'] }}</span>
+                                </div>
+                            </a>
+                        </div>
+                    @endif
+                @endif
+
+                <div class="col-md-3 col-sm-6 col-12">
+                    <a href="{{ route('admin.training-centers.index') }}" class="info-box">
+                        <span class="info-box-icon bg-warning"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text text-warning">Total Training Centers</span>
+                            <span class="info-box-number">{{ $dashboardStats['totalTrainingCentersCount'] }}</span>
+                        </div>
+                    </a>
+                </div>
+            
+                @if (!(AuthHelper::getAuthUser()->user_type_id == 6))
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <a href="{{ route('admin.branches.index') }}" class="info-box">
+                            <span class="info-box-icon bg-success"><i class="fas fa-code-branch"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text text-success">Total Branches</span>
+                                <span class="info-box-number">{{ $dashboardStats['totalBranchesCount'] }}</span>
+                            </div>
+                        </a>
+                    </div>
+                @endif      
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <a href="{{ route('admin.courses.index') }}" class="info-box">
+                        <span class="info-box-icon bg-danger"><i class="fas fa-book"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text text-danger">Total Courses</span>
+                            <span class="info-box-number">{{ $dashboardStats['totalCoursesCount'] }}</span>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    @endif
+
     @if (!(AuthHelper::getAuthUser()->user_type_id == 4))
         <div class="container-fluid">
-            <h2>Batch Analytics</h2>
+            <h3 class="p-1">Batch Analytics</h3>
             <div class="row">
                 @foreach($adminInfo as $info)
                     <div class="col-md-3 col-sm-6 col-12">
@@ -32,60 +86,8 @@
         </div>
     @endif
 
-    @if (!(AuthHelper::getAuthUser()->user_type_id == 4))
-        <div class="container-fluid">
-            <h2>Institute Management</h2>
-            <div class="row">
-                @if (!(AuthHelper::getAuthUser()->user_type_id == 6))
-                    @if (!(AuthHelper::getAuthUser()->user_type_id == 5))
-                        <div class="col-md-3 col-sm-6 col-12">
-                            <a href="{{ route('admin.institutes.index') }}" class="info-box">
-                                <span class="info-box-icon bg-primary"><i class="fas fa-university"></i></span>
-                                <div class="info-box-content">
-                                    <span class="info-box-text text-primary">Total Institutes</span>
-                                    <span class="info-box-number">{{ $dashboardStats['totalInstitutesCount'] }}</span>
-                                </div>
-                            </a>
-                        </div>
-                    @endif
-            
-                    <div class="col-md-3 col-sm-6 col-12">
-                        <a href="{{ route('admin.branches.index') }}" class="info-box">
-                            <span class="info-box-icon bg-success"><i class="fas fa-code-branch"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text text-success">Total Branches</span>
-                                <span class="info-box-number">{{ $dashboardStats['totalBranchesCount'] }}</span>
-                            </div>
-                        </a>
-                    </div>
-                @endif
-        
-                <div class="col-md-3 col-sm-6 col-12">
-                    <a href="{{ route('admin.training-centers.index') }}" class="info-box">
-                        <span class="info-box-icon bg-warning"><i class="fas fa-school"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text text-warning">Total Training Centers</span>
-                            <span class="info-box-number">{{ $dashboardStats['totalTrainingCentersCount'] }}</span>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="col-md-3 col-sm-6 col-12">
-                    <a href="{{ route('admin.courses.index') }}" class="info-box">
-                        <span class="info-box-icon bg-danger"><i class="fas fa-book"></i></span>
-                        <div class="info-box-content">
-                            <span class="info-box-text text-danger">Total Courses</span>
-                            <span class="info-box-number">{{ $dashboardStats['totalCoursesCount'] }}</span>
-                        </div>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    @endif
-
     <div class="container-fluid">
-        <h2>Trainee Applications</h2>
+        <h3 class="p-1">Trainee Applications</h3>
         <div class="row">
             <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{ route('admin.trainees.index') }}" class="info-box">

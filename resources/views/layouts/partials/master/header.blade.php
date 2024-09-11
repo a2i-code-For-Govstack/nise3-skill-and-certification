@@ -9,11 +9,17 @@
        </li>
 
        <li class="nav-item">
-        <a class="navbar-brand" href="#" style="padding-top: 8px">Dashboard</a>
-       </li>
+            <a class="navbar-brand" href="{{ route('admin.dashboard') }}"
+            style="padding-top: 8px; color: black; text-decoration: none;" 
+            onmouseover="this.style.color='#671688'; this.style.textDecoration='underline'; this.style.cursor='pointer';" 
+            onmouseout="this.style.color='black'; this.style.textDecoration='none';">
+                Dashboard
+            </a>
+        </li>
+    
         @if(\App\Helpers\Classes\AuthHelper::checkAuthUser())
             <li class="nav-item">
-                <a class="nav-link" href="{{route('admin.dashboard')}}" style="padding-top: 12px"><i class="fa fa-circle"></i></a>
+                <a class="nav-link" href="{{route('admin.dashboard')}}" style="padding-top: 12px; left: -20px"><i class="fa fa-circle"></i></a>
             </li>
         @else
             <li class="nav-item">
