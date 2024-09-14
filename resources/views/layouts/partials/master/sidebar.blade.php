@@ -223,7 +223,7 @@
                 </li>
             @endif
             
-            @if (!(AuthHelper::getAuthUser()->user_type_id == 4))
+            @if (!(AuthHelper::getAuthUser()->user_type_id == 4) && !(AuthHelper::getAuthUser()->user_type_id == 6))
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button">
                         <i class="fas fa-cog"></i>
@@ -234,7 +234,7 @@
                             href="{{ route('admin.static-page.index') }}">
                             Static Pages
                         </a>
-                        @if (!(AuthHelper::getAuthUser()->user_type_id == 5) && !(AuthHelper::getAuthUser()->user_type_id == 6))
+                        @if (!(AuthHelper::getAuthUser()->user_type_id == 5))
                             <a class="dropdown-item {{ request()->is('admin/site-setting*') ? 'active-sidebar' : '' }}"
                                 href="{{ route('admin.site-setting.index') }}">
                                 Site Settings

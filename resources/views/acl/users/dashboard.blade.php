@@ -1,29 +1,166 @@
+@php
+    use App\Helpers\Classes\AuthHelper;
+@endphp
+
 @extends('master::layouts.master')
 
 @section('title')
     User Dashboard
 @endsection
 @section('content')
-    <div class="container-fluid">
-        <div class="row">
 
-            @foreach($adminInfo as $info)
-                <div class="col-md-3 col-sm-6 col-12">
-                    <div class="info-box">
-                        <span class="info-box-icon bg-{{ $info['color'] }}"><i class="fas fa-info"></i></span>
-
-                        <div class="info-box-content">
-                            <span class="info-box-text text-{{ $info['color'] }}">{{ $info['title'] }}</span>
-                            <span class="info-box-number">{{ $info['count'] }}</span>
+    @if (!(AuthHelper::getAuthUser()->user_type_id == 4) && !(AuthHelper::getAuthUser()->user_type_id == 3))
+        <div class="container-fluid">
+            <h3 class="p-1">Institute Analytics</h3>
+            <div class="row">
+                @if (!(AuthHelper::getAuthUser()->user_type_id == 6))
+                    @if (!(AuthHelper::getAuthUser()->user_type_id == 5))
+                        <div class="col-md-3 col-sm-6 col-12">
+                            <a href="{{ route('admin.institutes.index') }}" class="info-box">
+                                <span class="info-box-icon bg-primary"><i class="fas fa-university"></i></span>
+                                <div class="info-box-content">
+                                    <span class="info-box-text text-primary">Total Institutes</span>
+                                    <span class="info-box-number">{{ $dashboardStats['totalInstitutesCount'] }}</span>
+                                </div>
+                            </a>
                         </div>
-                        <!-- /.info-box-content -->
-                    </div>
-                    <!-- /.info-box -->
-                </div>
-            @endforeach
+                    @endif
+                @endif
 
+                <div class="col-md-3 col-sm-6 col-12">
+                    <a href="{{ route('admin.training-centers.index') }}" class="info-box">
+                        <span class="info-box-icon bg-warning"><i class="fas fa-school"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text text-warning">Total Training Centers</span>
+                            <span class="info-box-number">{{ $dashboardStats['totalTrainingCentersCount'] }}</span>
+                        </div>
+                    </a>
+                </div>
+            
+                @if (!(AuthHelper::getAuthUser()->user_type_id == 6))
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <a href="{{ route('admin.branches.index') }}" class="info-box">
+                            <span class="info-box-icon bg-success"><i class="fas fa-code-branch"></i></span>
+                            <div class="info-box-content">
+                                <span class="info-box-text text-success">Total Branches</span>
+                                <span class="info-box-number">{{ $dashboardStats['totalBranchesCount'] }}</span>
+                            </div>
+                        </a>
+                    </div>
+                @endif      
+                
+                <div class="col-md-3 col-sm-6 col-12">
+                    <a href="{{ route('admin.courses.index') }}" class="info-box">
+                        <span class="info-box-icon bg-danger"><i class="fas fa-book"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text text-danger">Total Courses</span>
+                            <span class="info-box-number">{{ $dashboardStats['totalCoursesCount'] }}</span>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    @endif
+
+    @if (!(AuthHelper::getAuthUser()->user_type_id == 4))
+        <div class="container-fluid">
+            <h3 class="p-1">Batch Analytics</h3>
+            <div class="row">
+                @foreach($adminInfo as $info)
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="info-box">
+                            <span class="info-box-icon bg-{{ $info['color'] }}"><i class="fas fa-info"></i></span>
+
+                            <div class="info-box-content">
+                                <span class="info-box-text text-{{ $info['color'] }}">{{ $info['title'] }}</span>
+                                <span class="info-box-number">{{ $info['count'] }}</span>
+                            </div>
+                            <!-- /.info-box-content -->
+                        </div>
+                        <!-- /.info-box -->
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    @endif
+
+    <div class="container-fluid">
+        <h3 class="p-1">Trainee Applications</h3>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainees.index') }}" class="info-box">
+                    <span class="info-box-icon bg-info"><i class="fas fa-user-graduate"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-info">Total Trainees</span>
+                        <span class="info-box-number">{{ $dashboardStats['totalTraineesCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainee.registrations.index') }}" class="info-box">
+                    <span class="info-box-icon bg-secondary"><i class="fas fa-file-alt"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-secondary">Pending Applications</span>
+                        <span class="info-box-number">{{ $dashboardStats['pendingRequestsCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ route('admin.trainee.certificates.request') }}" class="info-box">
+                    <span class="info-box-icon bg-warning"><i class="fas fa-certificate"></i></span>
+                    <div class="info-box-content">
+                        <span class="info-box-text text-warning">Pending Certificate Requests</span>
+                        <span class="info-box-number">{{ $dashboardStats['pendingCertificateRequestsCount'] }}</span>
+                    </div>
+                </a>
+            </div>
+            
         </div>
     </div>
+    
+    <!-- Events Section -->
+    <div class="container-fluid">
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ __('Events Overview') }}</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                @if($events->isEmpty())
+                                    <p>{{ __('No events available.') }}</p>
+                                @else
+                                    <ul class="list-group">
+                                        @foreach($events as $event)
+                                            <li class="list-group-item">
+                                                <strong>{{ $event->caption }}</strong> <br>
+                                                <span>{{ \Carbon\Carbon::parse($event->date)->format('d M, Y h:i A') }}</span> <br>
+                                                <p>{{ $event->details }}</p>
+                                                <a href="{{ route('admin.events.show', $event->id) }}" class="btn btn-primary mt-2">
+                                                    View Details
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
+                            <div class="col-md-4">
+                                <div id='events-calender'></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
 
     @if(\App\Helpers\Classes\AuthHelper::getAuthUser()->isTrainer())
         <section class="routine-calendar mt-5">
@@ -378,6 +515,109 @@
             });
             calendar.render();
 
+        });
+    </script>
+@endpush
+
+@push('js')
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/locales-all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+
+    <script id="event-data" type="application/json">
+        {!! $events->map(function($event) {
+            return [
+                'title' => $event->caption,
+                'start' => $event->date,
+                'details' => $event->details,
+                'url' => route('admin.events.show', $event->id),
+            ];
+        })->toJson() !!}
+    </script>
+
+    <script>
+        $(function () {
+            let calendarEl = document.getElementById('events-calender');
+            let initialDate = '{{ date('Y-m-d') }}';
+            let initialLocaleCode = '{{ config('settings.locale_code') }}';
+
+            let events = JSON.parse(document.getElementById('event-data').textContent);
+
+            let calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialDate: initialDate,
+                height: 500,
+                aspectRatio: 1,
+                displayEventTime: false,
+                selectable: true,
+                events: events,
+                eventContent: function(info) {
+                    let dot = document.createElement('div');
+                    dot.style.width = '8px';
+                    dot.style.height = '8px';
+                    dot.style.backgroundColor = '#007bff';
+                    dot.style.borderRadius = '50%';
+                    dot.style.margin = 'auto';
+                    dot.style.marginTop = '5px';
+
+                    let container = document.createElement('div');
+                    container.style.display = 'flex';
+                    container.style.justifyContent = 'center';
+                    container.style.alignItems = 'center';
+                    container.style.height = '100%';
+                    container.appendChild(dot);
+
+                    return { domNodes: [container] };
+                },
+                eventDidMount: function (info) {
+                    let tooltipContent = `
+                        <div>
+                            <strong>${info.event.title}</strong><br>
+                            <p>${info.event.extendedProps.details}</p>
+                        </div>
+                    `;
+                    let tooltip = new bootstrap.Tooltip(info.el, {
+                        title: tooltipContent,
+                        html: true,
+                        placement: 'top',
+                        trigger: 'hover focus',
+                        container: 'body'
+                    });
+
+                    $(info.el).on('mouseenter', function() {
+                        tooltip.show();
+                    }).on('mouseleave', function() {
+                        setTimeout(() => {
+                            if (!$('.tooltip:hover').length) {
+                                tooltip.hide();
+                            }
+                        }, 300);
+                    });
+
+                    $(document).on('mouseleave', '.tooltip', function() {
+                        tooltip.hide();
+                    });
+                    
+                    $(info.el).on('click', function() {
+                        window.location.href = info.event.extendedProps.url;
+                    });
+                },
+                dateClick: function (info) {
+                    let eventDateTime = new Date(info.dateStr);
+                    eventDateTime = new Intl.DateTimeFormat('{{ config('settings.locale_code') }}', {
+                        weekday: 'long',
+                        day: '2-digit',
+                        month: 'long',
+                        year: 'numeric',
+                    }).format(eventDateTime);
+                    $('#eventDateTime').html(eventDateTime);
+                    const start = info.dateStr;
+                    eventsOfSpecificDate(start);
+                }
+            });
+
+            calendar.render();
         });
     </script>
 @endpush

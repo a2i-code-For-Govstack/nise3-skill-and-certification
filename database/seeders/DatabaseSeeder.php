@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             TraineeSeeder::class,
             SliderSeeder::class,
             GalleryAlbumSeeder::class,
+            EventSeeder::class,
         ]);
     }
 }

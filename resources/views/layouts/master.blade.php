@@ -270,9 +270,9 @@
 
     @yield('sidebar', Illuminate\Support\Facades\View::make('master::layouts.partials.master.sidebar'))
 
-    <div class="content-wrapper specific-div px-1 py-2" style="position: relative;">
+    <div class="content-wrapper specific-div px-1 pt-2 pb-5" style="position: relative;">
         @yield('content')
-    </div
+    </div>
 
     <div class="specific-div">
         @yield('footer', Illuminate\Support\Facades\View::make('master::layouts.partials.master.footer'))
